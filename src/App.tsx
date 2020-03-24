@@ -1,59 +1,74 @@
-import React from 'react'
-import logo from './logo.svg';
+import React,{useState} from 'react'
 import styled from 'styled-components'
+import { Form, Formik, FormikHelpers } from 'formik'
 
-const Wrap = styled.div`
-	text-align: center;
-`;
-const Header = styled.header`
-	background-color: #282c34;
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	font-size: calc(10px + 2vmin);
+import { Fetch } from "./Fetch";
+import { QuerySelect } from './QuerySelect';
+import { queries } from './queries';
+import AutoSave from './Autosave';
+
+
+const StyledForm = styled(Form)`
+	padding: 1em;
 	color: white;
 `;
-const Logo = styled.img`
-	height: 40vmin;
-	pointer-events: none;
-	@media (prefers-reduced-motion: no-preference) {
-		animation: App-logo-spin infinite 20s linear;
-	}
-	@keyframes App-logo-spin {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(360deg);
-		}
-	}
-`
-const Link = styled.a`
-	color: #61dafb;
+const FetchWrap = styled.div`
+	font-size: 12px;
+	min-height: 20em;
+	padding: 2em;
+	border: 3px double white;
 `;
-const Code = styled.code`
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+const QueryDisplay = styled.pre`
+	color: white;
+	height: 20em;
+	overflow-y: scroll;
+	border: 1px solid white;
+`;
+const TwoColumns = styled.div`
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-items: center;
+	justify-items: baseline;
 `;
 
+interface FormState {
+	query:number;
+};
+const initialValues:FormState = {
+	query: 1,
+};
+
+
 const App = () => {
+	const [query, setQuery] = useState<string>("");
+	
+	const handleSubmit = (values:FormState, form:FormikHelpers<FormState>) => {
+		setQuery(queries[values.query].query);
+		form.setSubmitting(false);
+	}
 	return (
-		<Wrap>
-			<Header>
-				<Logo src={logo} className="App-logo" alt="logo" />
-				<p>
-					Edit <Code>src/App.tsx</Code> and save to reload.
-				</p>
-				<Link
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</Link>
-			</Header>
-		</Wrap>
+		<Formik
+			initialValues={initialValues}
+			onSubmit={handleSubmit}
+		>
+			{({values}) => (
+				<StyledForm>
+					<AutoSave debounceMs={300} hideOutput />
+					<h2>Query:</h2>
+					<TwoColumns>
+						<QuerySelect name="query" />
+						<p>Query cookbook <a target="_blank" rel="noopener noreferrer" href="https://www.back4app.com/docs/parse-graphql/graphql-getting-started">here</a>.</p>
+					</TwoColumns>
+					<QueryDisplay>
+						{query}
+					</QueryDisplay>
+					<h2>Result:</h2>
+					<FetchWrap>
+						<Fetch query={query} />
+					</FetchWrap>
+				</StyledForm>
+			)}
+		</Formik>
 	);
 }
 
