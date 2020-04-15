@@ -13,16 +13,18 @@ export const logInQuery = graphql`
 		}
 	}
 `;
-// OperationType for logInQuery
+// OperationType for logInQuery. I could have extended OperationType with no difference.
 export interface LogInOperation extends MutationParameters {
 	variables: {
 		username: string;
 		password: string;
 	};
 	response: {
-		id: string;
-		username: string;
-		sessionToken: string;
+		logIn: {
+			id: string;
+			username: string;
+			sessionToken: string;
+		}
 	};
 }
 // Retrieve all posts in system
@@ -39,7 +41,7 @@ export const getAllPostsQuery = graphql`
 		}
 	}
 `;
-// OperationType for getAllPostsQuery
+// OperationType for getAllPostsQuery. Not actually used...
 export interface GetPostsOperation extends OperationType {
 	variables: {
 		//No inputs
@@ -77,7 +79,7 @@ export const submitPostQuery = graphql`
 	}
 `;
 //OperationType for submitPostQuery
-export interface SubmitPostOperation extends OperationType {
+export interface SubmitPostOperation extends MutationParameters {
 	variables: {
 		content: String;
 		likes: Number;

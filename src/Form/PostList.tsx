@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { getAllPostsQuery, GetPostsOperation } from "../queries/queries";
+import { getAllPostsQuery } from "../queries/queries";
 import { QueryRenderer } from 'react-relay';
-import { relayEnvironment } from '../relayEnvironment';
+import { loggedOutEnvironment } from '../relayEnvironment';
 import ReactJson from 'react-json-view';
 
 /*interface TableProps {
@@ -28,10 +28,10 @@ const Table = (props:TableProps) => {
 
 const PostList = () => (
 	<QueryRenderer
-		environment={relayEnvironment}
+		environment={loggedOutEnvironment}
 		query={getAllPostsQuery}
 		variables={{}}
-		render={({props}:{props:any}) => (
+		render={({props}:{props: any}) => (
 			<ReactJson
 				src={props}
 				theme="isotope"

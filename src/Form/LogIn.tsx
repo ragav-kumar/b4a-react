@@ -53,14 +53,17 @@ interface LogInProps {
 		values: LogInState,
 		form: FormikHelpers<LogInState>
 	) => void;
-	isInvalid: Boolean
+	isInvalid: Boolean;
+	isLoggedIn: Boolean;
 }
-export const LogIn = ({onSubmit, isInvalid}:LogInProps) => (
+export const LogIn = ({onSubmit, isInvalid, isLoggedIn}:LogInProps) => (
 	<Formik
 		initialValues={initialValues}
 		onSubmit={onSubmit}
+		validationSchema={loginSchema}
 	>
 		{() => (
+			<>{isLoggedIn ? null : 
 			<StyledForm>
 				<label>
 					<span>Username</span>
@@ -92,6 +95,7 @@ export const LogIn = ({onSubmit, isInvalid}:LogInProps) => (
 					/>
 				</label>
 			</StyledForm>
+			}</>
 		)}
 	</Formik>
 )
