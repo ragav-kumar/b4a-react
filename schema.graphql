@@ -1,0 +1,2929 @@
+# The Any scalar type is used in operations and types that involve any type of value.
+scalar Any
+
+# Use Inline Fragment on Array to get results: https://graphql.org/learn/queries/#inline-fragments
+union ArrayResult =
+    Element
+  | Installation
+  | Role
+  | Session
+  | User
+  | B4aCustomField
+  | B4aMenuItem
+  | B4aSetting
+  | B4aVehicle
+  | Comment
+  | Post
+# The ArrayWhereInput input type is used in operations that involve filtering objects by a field of type Array.
+input ArrayWhereInput {
+  # This is the equalTo operator to specify a constraint to select the objects
+  # where the value of a field equals to a specified value.
+  equalTo: Any
+  # This is the notEqualTo operator to specify a constraint to select the objects
+  # where the value of a field do not equal to a specified value.
+  notEqualTo: Any
+  # This is the lessThan operator to specify a constraint to select the objects
+  # where the value of a field is less than a specified value.
+  lessThan: Any
+  # This is the lessThanOrEqualTo operator to specify a constraint to select the
+  # objects where the value of a field is less than or equal to a specified value.
+  lessThanOrEqualTo: Any
+  # This is the greaterThan operator to specify a constraint to select the objects
+  # where the value of a field is greater than a specified value.
+  greaterThan: Any
+  # This is the greaterThanOrEqualTo operator to specify a constraint to select
+  # the objects where the value of a field is greater than or equal to a specified value.
+  greaterThanOrEqualTo: Any
+  # This is the in operator to specify a constraint to select the objects where
+  # the value of a field equals any value in the specified array.
+  in: [Any]
+  # This is the notIn operator to specify a constraint to select the objects where
+  # the value of a field do not equal any value in the specified array.
+  notIn: [Any]
+  # This is the exists operator to specify a constraint to select the objects where a field exists (or do not exist).
+  exists: Boolean
+  # This is the inQueryKey operator to specify a constraint to select the objects
+  # where a field equals to a key in the result of a different query.
+  inQueryKey: SelectInput
+  # This is the notInQueryKey operator to specify a constraint to select the
+  # objects where a field do not equal to a key in the result of a different query.
+  notInQueryKey: SelectInput
+  # This is the containedBy operator to specify a constraint to select the objects
+  # where the values of an array field is contained by another specified array.
+  containedBy: [Any]
+  # This is the contains operator to specify a constraint to select the objects
+  # where the values of an array field contain all elements of another specified array.
+  contains: [Any]
+}
+
+# The B4aCustomField object type is used in operations that involve outputting objects of B4aCustomField class.
+type B4aCustomField implements ParseObject {
+  # This is the object id.
+  id: ID!
+  # This is the date in which the object was created.
+  createdAt: Date!
+  # This is the date in which the object was las updated.
+  updatedAt: Date!
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object objectClassName.
+  objectClassName: String
+  # This is the object objectClassFieldName.
+  objectClassFieldName: String
+  # This is the object title.
+  title: String
+  # This is the object isTableHidden.
+  isTableHidden: Boolean
+  # This is the object options.
+  options: String
+  # This is the object referencesLinkTitle.
+  referencesLinkTitle: String
+  # This is the object referenceTitleField.
+  referenceTitleField: String
+  # This is the object relevance.
+  relevance: Float
+  # This is the object isRequired.
+  isRequired: Boolean
+  # This is the object inputMask.
+  inputMask: String
+  # This is the object referencesLinkText.
+  referencesLinkText: String
+  # This is the object cssClassName.
+  cssClassName: String
+  # This is the object subType.
+  subType: String
+  # This is the object defaultValue.
+  defaultValue: String
+  # This is the object isFormHidden.
+  isFormHidden: String
+}
+
+# The B4aCustomFieldFindResult object type is used in the B4aCustomField find query to return the data of the matched objects.
+type B4aCustomFieldFindResult {
+  # This is the objects returned by the query
+  results: [B4aCustomField!]!
+  # This is the total matched objecs count that is returned when the count flag is set.
+  count: Int!
+}
+
+# The B4aCustomFieldOrder input type is used when sorting objects of the B4aCustomField class.
+enum B4aCustomFieldOrder {
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  ACL_ASC
+  ACL_DESC
+  objectClassName_ASC
+  objectClassName_DESC
+  objectClassFieldName_ASC
+  objectClassFieldName_DESC
+  title_ASC
+  title_DESC
+  isTableHidden_ASC
+  isTableHidden_DESC
+  options_ASC
+  options_DESC
+  referencesLinkTitle_ASC
+  referencesLinkTitle_DESC
+  referenceTitleField_ASC
+  referenceTitleField_DESC
+  relevance_ASC
+  relevance_DESC
+  isRequired_ASC
+  isRequired_DESC
+  inputMask_ASC
+  inputMask_DESC
+  referencesLinkText_ASC
+  referencesLinkText_DESC
+  cssClassName_ASC
+  cssClassName_DESC
+  subType_ASC
+  subType_DESC
+  defaultValue_ASC
+  defaultValue_DESC
+  isFormHidden_ASC
+  isFormHidden_DESC
+  id_ASC
+  id_DESC
+}
+
+# Allow to link OR add and link an object of the B4aCustomField class.
+input B4aCustomFieldPointerInput {
+  # Link an existing object from B4aCustomField class.
+  link: ID
+  # Create and link an object from B4aCustomField class.
+  createAndLink: CreateB4aCustomFieldFieldsInput
+}
+
+# The B4aCustomFieldPointerWhereInput input type is used in operations that
+# involve filtering objects by a pointer field to B4aCustomField class.
+input B4aCustomFieldPointerWhereInput {
+  # This is the equalTo operator to specify a constraint to select the objects
+  # where the value of a field equals to a specified value.
+  equalTo: ID
+  # This is the notEqualTo operator to specify a constraint to select the objects
+  # where the value of a field do not equal to a specified value.
+  notEqualTo: ID
+  # This is the in operator to specify a constraint to select the objects where
+  # the value of a field equals any value in the specified array.
+  in: [ID!]
+  # This is the notIn operator to specify a constraint to select the objects where
+  # the value of a field do not equal any value in the specified array.
+  notIn: [ID!]
+  # This is the exists operator to specify a constraint to select the objects where a field exists (or do not exist).
+  exists: Boolean
+  # This is the inQueryKey operator to specify a constraint to select the objects
+  # where a field equals to a key in the result of a different query.
+  inQueryKey: SelectInput
+  # This is the notInQueryKey operator to specify a constraint to select the
+  # objects where a field do not equal to a key in the result of a different query.
+  notInQueryKey: SelectInput
+  # This is the inQuery operator to specify a constraint to select the objects
+  # where a field equals to any of the ids in the result of a different query.
+  inQuery: SubqueryInput
+  # This is the notInQuery operator to specify a constraint to select the objects
+  # where a field do not equal to any of the ids in the result of a different query.
+  notInQuery: SubqueryInput
+}
+
+# Allow to add, remove, createAndAdd objects of the B4aCustomField class into a relation field.
+input B4aCustomFieldRelationInput {
+  # Add an existing object from the B4aCustomField class into the relation.
+  add: [ID!]
+  # Remove an existing object from the B4aCustomField class out of the relation.
+  remove: [ID!]
+  # Create and add an object of the B4aCustomField class into the relation.
+  createAndAdd: [CreateB4aCustomFieldFieldsInput!]
+}
+
+# The B4aCustomFieldWhereInput input type is used in operations that involve filtering objects of B4aCustomField class.
+input B4aCustomFieldWhereInput {
+  # This is the object createdAt.
+  createdAt: DateWhereInput
+  # This is the object updatedAt.
+  updatedAt: DateWhereInput
+  # This is the object ACL.
+  ACL: ObjectWhereInput
+  # This is the object objectClassName.
+  objectClassName: StringWhereInput
+  # This is the object objectClassFieldName.
+  objectClassFieldName: StringWhereInput
+  # This is the object title.
+  title: StringWhereInput
+  # This is the object isTableHidden.
+  isTableHidden: BooleanWhereInput
+  # This is the object options.
+  options: StringWhereInput
+  # This is the object referencesLinkTitle.
+  referencesLinkTitle: StringWhereInput
+  # This is the object referenceTitleField.
+  referenceTitleField: StringWhereInput
+  # This is the object relevance.
+  relevance: NumberWhereInput
+  # This is the object isRequired.
+  isRequired: BooleanWhereInput
+  # This is the object inputMask.
+  inputMask: StringWhereInput
+  # This is the object referencesLinkText.
+  referencesLinkText: StringWhereInput
+  # This is the object cssClassName.
+  cssClassName: StringWhereInput
+  # This is the object subType.
+  subType: StringWhereInput
+  # This is the object defaultValue.
+  defaultValue: StringWhereInput
+  # This is the object isFormHidden.
+  isFormHidden: StringWhereInput
+  # This is the object id.
+  id: StringWhereInput
+  # This is the OR operator to compound constraints.
+  OR: [B4aCustomFieldWhereInput!]
+  # This is the AND operator to compound constraints.
+  AND: [B4aCustomFieldWhereInput!]
+  # This is the NOR operator to compound constraints.
+  NOR: [B4aCustomFieldWhereInput!]
+}
+
+# The B4aMenuItem object type is used in operations that involve outputting objects of B4aMenuItem class.
+type B4aMenuItem implements ParseObject {
+  # This is the object id.
+  id: ID!
+  # This is the date in which the object was created.
+  createdAt: Date!
+  # This is the date in which the object was las updated.
+  updatedAt: Date!
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object title.
+  title: String
+  # This is the object objectClassName.
+  objectClassName: String
+  # This is the object relevance.
+  relevance: String
+  # This is the object isReadOnly.
+  isReadOnly: Boolean
+  # This is the object isHidden.
+  isHidden: Boolean
+  # This is the object editFormTitle.
+  editFormTitle: String
+  # This is the object addFormTitle.
+  addFormTitle: String
+}
+
+# The B4aMenuItemFindResult object type is used in the B4aMenuItem find query to return the data of the matched objects.
+type B4aMenuItemFindResult {
+  # This is the objects returned by the query
+  results: [B4aMenuItem!]!
+  # This is the total matched objecs count that is returned when the count flag is set.
+  count: Int!
+}
+
+# The B4aMenuItemOrder input type is used when sorting objects of the B4aMenuItem class.
+enum B4aMenuItemOrder {
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  ACL_ASC
+  ACL_DESC
+  title_ASC
+  title_DESC
+  objectClassName_ASC
+  objectClassName_DESC
+  relevance_ASC
+  relevance_DESC
+  isReadOnly_ASC
+  isReadOnly_DESC
+  isHidden_ASC
+  isHidden_DESC
+  editFormTitle_ASC
+  editFormTitle_DESC
+  addFormTitle_ASC
+  addFormTitle_DESC
+  id_ASC
+  id_DESC
+}
+
+# Allow to link OR add and link an object of the B4aMenuItem class.
+input B4aMenuItemPointerInput {
+  # Link an existing object from B4aMenuItem class.
+  link: ID
+  # Create and link an object from B4aMenuItem class.
+  createAndLink: CreateB4aMenuItemFieldsInput
+}
+
+# The B4aMenuItemPointerWhereInput input type is used in operations that involve
+# filtering objects by a pointer field to B4aMenuItem class.
+input B4aMenuItemPointerWhereInput {
+  # This is the equalTo operator to specify a constraint to select the objects
+  # where the value of a field equals to a specified value.
+  equalTo: ID
+  # This is the notEqualTo operator to specify a constraint to select the objects
+  # where the value of a field do not equal to a specified value.
+  notEqualTo: ID
+  # This is the in operator to specify a constraint to select the objects where
+  # the value of a field equals any value in the specified array.
+  in: [ID!]
+  # This is the notIn operator to specify a constraint to select the objects where
+  # the value of a field do not equal any value in the specified array.
+  notIn: [ID!]
+  # This is the exists operator to specify a constraint to select the objects where a field exists (or do not exist).
+  exists: Boolean
+  # This is the inQueryKey operator to specify a constraint to select the objects
+  # where a field equals to a key in the result of a different query.
+  inQueryKey: SelectInput
+  # This is the notInQueryKey operator to specify a constraint to select the
+  # objects where a field do not equal to a key in the result of a different query.
+  notInQueryKey: SelectInput
+  # This is the inQuery operator to specify a constraint to select the objects
+  # where a field equals to any of the ids in the result of a different query.
+  inQuery: SubqueryInput
+  # This is the notInQuery operator to specify a constraint to select the objects
+  # where a field do not equal to any of the ids in the result of a different query.
+  notInQuery: SubqueryInput
+}
+
+# Allow to add, remove, createAndAdd objects of the B4aMenuItem class into a relation field.
+input B4aMenuItemRelationInput {
+  # Add an existing object from the B4aMenuItem class into the relation.
+  add: [ID!]
+  # Remove an existing object from the B4aMenuItem class out of the relation.
+  remove: [ID!]
+  # Create and add an object of the B4aMenuItem class into the relation.
+  createAndAdd: [CreateB4aMenuItemFieldsInput!]
+}
+
+# The B4aMenuItemWhereInput input type is used in operations that involve filtering objects of B4aMenuItem class.
+input B4aMenuItemWhereInput {
+  # This is the object createdAt.
+  createdAt: DateWhereInput
+  # This is the object updatedAt.
+  updatedAt: DateWhereInput
+  # This is the object ACL.
+  ACL: ObjectWhereInput
+  # This is the object title.
+  title: StringWhereInput
+  # This is the object objectClassName.
+  objectClassName: StringWhereInput
+  # This is the object relevance.
+  relevance: StringWhereInput
+  # This is the object isReadOnly.
+  isReadOnly: BooleanWhereInput
+  # This is the object isHidden.
+  isHidden: BooleanWhereInput
+  # This is the object editFormTitle.
+  editFormTitle: StringWhereInput
+  # This is the object addFormTitle.
+  addFormTitle: StringWhereInput
+  # This is the object id.
+  id: StringWhereInput
+  # This is the OR operator to compound constraints.
+  OR: [B4aMenuItemWhereInput!]
+  # This is the AND operator to compound constraints.
+  AND: [B4aMenuItemWhereInput!]
+  # This is the NOR operator to compound constraints.
+  NOR: [B4aMenuItemWhereInput!]
+}
+
+# The B4aSetting object type is used in operations that involve outputting objects of B4aSetting class.
+type B4aSetting implements ParseObject {
+  # This is the object id.
+  id: ID!
+  # This is the date in which the object was created.
+  createdAt: Date!
+  # This is the date in which the object was las updated.
+  updatedAt: Date!
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object key.
+  key: String
+  # This is the object value.
+  value: String
+}
+
+# The B4aSettingFindResult object type is used in the B4aSetting find query to return the data of the matched objects.
+type B4aSettingFindResult {
+  # This is the objects returned by the query
+  results: [B4aSetting!]!
+  # This is the total matched objecs count that is returned when the count flag is set.
+  count: Int!
+}
+
+# The B4aSettingOrder input type is used when sorting objects of the B4aSetting class.
+enum B4aSettingOrder {
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  ACL_ASC
+  ACL_DESC
+  key_ASC
+  key_DESC
+  value_ASC
+  value_DESC
+  id_ASC
+  id_DESC
+}
+
+# Allow to link OR add and link an object of the B4aSetting class.
+input B4aSettingPointerInput {
+  # Link an existing object from B4aSetting class.
+  link: ID
+  # Create and link an object from B4aSetting class.
+  createAndLink: CreateB4aSettingFieldsInput
+}
+
+# The B4aSettingPointerWhereInput input type is used in operations that involve
+# filtering objects by a pointer field to B4aSetting class.
+input B4aSettingPointerWhereInput {
+  # This is the equalTo operator to specify a constraint to select the objects
+  # where the value of a field equals to a specified value.
+  equalTo: ID
+  # This is the notEqualTo operator to specify a constraint to select the objects
+  # where the value of a field do not equal to a specified value.
+  notEqualTo: ID
+  # This is the in operator to specify a constraint to select the objects where
+  # the value of a field equals any value in the specified array.
+  in: [ID!]
+  # This is the notIn operator to specify a constraint to select the objects where
+  # the value of a field do not equal any value in the specified array.
+  notIn: [ID!]
+  # This is the exists operator to specify a constraint to select the objects where a field exists (or do not exist).
+  exists: Boolean
+  # This is the inQueryKey operator to specify a constraint to select the objects
+  # where a field equals to a key in the result of a different query.
+  inQueryKey: SelectInput
+  # This is the notInQueryKey operator to specify a constraint to select the
+  # objects where a field do not equal to a key in the result of a different query.
+  notInQueryKey: SelectInput
+  # This is the inQuery operator to specify a constraint to select the objects
+  # where a field equals to any of the ids in the result of a different query.
+  inQuery: SubqueryInput
+  # This is the notInQuery operator to specify a constraint to select the objects
+  # where a field do not equal to any of the ids in the result of a different query.
+  notInQuery: SubqueryInput
+}
+
+# Allow to add, remove, createAndAdd objects of the B4aSetting class into a relation field.
+input B4aSettingRelationInput {
+  # Add an existing object from the B4aSetting class into the relation.
+  add: [ID!]
+  # Remove an existing object from the B4aSetting class out of the relation.
+  remove: [ID!]
+  # Create and add an object of the B4aSetting class into the relation.
+  createAndAdd: [CreateB4aSettingFieldsInput!]
+}
+
+# The B4aSettingWhereInput input type is used in operations that involve filtering objects of B4aSetting class.
+input B4aSettingWhereInput {
+  # This is the object createdAt.
+  createdAt: DateWhereInput
+  # This is the object updatedAt.
+  updatedAt: DateWhereInput
+  # This is the object ACL.
+  ACL: ObjectWhereInput
+  # This is the object key.
+  key: StringWhereInput
+  # This is the object value.
+  value: StringWhereInput
+  # This is the object id.
+  id: StringWhereInput
+  # This is the OR operator to compound constraints.
+  OR: [B4aSettingWhereInput!]
+  # This is the AND operator to compound constraints.
+  AND: [B4aSettingWhereInput!]
+  # This is the NOR operator to compound constraints.
+  NOR: [B4aSettingWhereInput!]
+}
+
+# The B4aVehicle object type is used in operations that involve outputting objects of B4aVehicle class.
+type B4aVehicle implements ParseObject {
+  # This is the object id.
+  id: ID!
+  # This is the date in which the object was created.
+  createdAt: Date!
+  # This is the date in which the object was las updated.
+  updatedAt: Date!
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object name.
+  name: String
+  # This is the object price.
+  price: Float
+  # This is the object color.
+  color: String
+}
+
+# The B4aVehicleFindResult object type is used in the B4aVehicle find query to return the data of the matched objects.
+type B4aVehicleFindResult {
+  # This is the objects returned by the query
+  results: [B4aVehicle!]!
+  # This is the total matched objecs count that is returned when the count flag is set.
+  count: Int!
+}
+
+# The B4aVehicleOrder input type is used when sorting objects of the B4aVehicle class.
+enum B4aVehicleOrder {
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  ACL_ASC
+  ACL_DESC
+  name_ASC
+  name_DESC
+  price_ASC
+  price_DESC
+  color_ASC
+  color_DESC
+  id_ASC
+  id_DESC
+}
+
+# Allow to link OR add and link an object of the B4aVehicle class.
+input B4aVehiclePointerInput {
+  # Link an existing object from B4aVehicle class.
+  link: ID
+  # Create and link an object from B4aVehicle class.
+  createAndLink: CreateB4aVehicleFieldsInput
+}
+
+# The B4aVehiclePointerWhereInput input type is used in operations that involve
+# filtering objects by a pointer field to B4aVehicle class.
+input B4aVehiclePointerWhereInput {
+  # This is the equalTo operator to specify a constraint to select the objects
+  # where the value of a field equals to a specified value.
+  equalTo: ID
+  # This is the notEqualTo operator to specify a constraint to select the objects
+  # where the value of a field do not equal to a specified value.
+  notEqualTo: ID
+  # This is the in operator to specify a constraint to select the objects where
+  # the value of a field equals any value in the specified array.
+  in: [ID!]
+  # This is the notIn operator to specify a constraint to select the objects where
+  # the value of a field do not equal any value in the specified array.
+  notIn: [ID!]
+  # This is the exists operator to specify a constraint to select the objects where a field exists (or do not exist).
+  exists: Boolean
+  # This is the inQueryKey operator to specify a constraint to select the objects
+  # where a field equals to a key in the result of a different query.
+  inQueryKey: SelectInput
+  # This is the notInQueryKey operator to specify a constraint to select the
+  # objects where a field do not equal to a key in the result of a different query.
+  notInQueryKey: SelectInput
+  # This is the inQuery operator to specify a constraint to select the objects
+  # where a field equals to any of the ids in the result of a different query.
+  inQuery: SubqueryInput
+  # This is the notInQuery operator to specify a constraint to select the objects
+  # where a field do not equal to any of the ids in the result of a different query.
+  notInQuery: SubqueryInput
+}
+
+# Allow to add, remove, createAndAdd objects of the B4aVehicle class into a relation field.
+input B4aVehicleRelationInput {
+  # Add an existing object from the B4aVehicle class into the relation.
+  add: [ID!]
+  # Remove an existing object from the B4aVehicle class out of the relation.
+  remove: [ID!]
+  # Create and add an object of the B4aVehicle class into the relation.
+  createAndAdd: [CreateB4aVehicleFieldsInput!]
+}
+
+# The B4aVehicleWhereInput input type is used in operations that involve filtering objects of B4aVehicle class.
+input B4aVehicleWhereInput {
+  # This is the object createdAt.
+  createdAt: DateWhereInput
+  # This is the object updatedAt.
+  updatedAt: DateWhereInput
+  # This is the object ACL.
+  ACL: ObjectWhereInput
+  # This is the object name.
+  name: StringWhereInput
+  # This is the object price.
+  price: NumberWhereInput
+  # This is the object color.
+  color: StringWhereInput
+  # This is the object id.
+  id: StringWhereInput
+  # This is the OR operator to compound constraints.
+  OR: [B4aVehicleWhereInput!]
+  # This is the AND operator to compound constraints.
+  AND: [B4aVehicleWhereInput!]
+  # This is the NOR operator to compound constraints.
+  NOR: [B4aVehicleWhereInput!]
+}
+
+# The BooleanWhereInput input type is used in operations that involve filtering objects by a field of type Boolean.
+input BooleanWhereInput {
+  # This is the equalTo operator to specify a constraint to select the objects
+  # where the value of a field equals to a specified value.
+  equalTo: Boolean
+  # This is the notEqualTo operator to specify a constraint to select the objects
+  # where the value of a field do not equal to a specified value.
+  notEqualTo: Boolean
+  # This is the exists operator to specify a constraint to select the objects where a field exists (or do not exist).
+  exists: Boolean
+  # This is the inQueryKey operator to specify a constraint to select the objects
+  # where a field equals to a key in the result of a different query.
+  inQueryKey: SelectInput
+  # This is the notInQueryKey operator to specify a constraint to select the
+  # objects where a field do not equal to a key in the result of a different query.
+  notInQueryKey: SelectInput
+}
+
+# The BoxInput type is used to specifiy a box operation on a within geo query.
+input BoxInput {
+  # This is the bottom left coordinates of the box.
+  bottomLeft: GeoPointInput!
+  # This is the upper right coordinates of the box.
+  upperRight: GeoPointInput!
+}
+
+# The Bytes scalar type is used in operations and types that involve base 64 binary data.
+scalar Bytes
+
+# The BytesWhereInput input type is used in operations that involve filtering objects by a field of type Bytes.
+input BytesWhereInput {
+  # This is the equalTo operator to specify a constraint to select the objects
+  # where the value of a field equals to a specified value.
+  equalTo: Bytes
+  # This is the notEqualTo operator to specify a constraint to select the objects
+  # where the value of a field do not equal to a specified value.
+  notEqualTo: Bytes
+  # This is the lessThan operator to specify a constraint to select the objects
+  # where the value of a field is less than a specified value.
+  lessThan: Bytes
+  # This is the lessThanOrEqualTo operator to specify a constraint to select the
+  # objects where the value of a field is less than or equal to a specified value.
+  lessThanOrEqualTo: Bytes
+  # This is the greaterThan operator to specify a constraint to select the objects
+  # where the value of a field is greater than a specified value.
+  greaterThan: Bytes
+  # This is the greaterThanOrEqualTo operator to specify a constraint to select
+  # the objects where the value of a field is greater than or equal to a specified value.
+  greaterThanOrEqualTo: Bytes
+  # This is the in operator to specify a constraint to select the objects where
+  # the value of a field equals any value in the specified array.
+  in: [Bytes]
+  # This is the notIn operator to specify a constraint to select the objects where
+  # the value of a field do not equal any value in the specified array.
+  notIn: [Bytes]
+  # This is the exists operator to specify a constraint to select the objects where a field exists (or do not exist).
+  exists: Boolean
+  # This is the inQueryKey operator to specify a constraint to select the objects
+  # where a field equals to a key in the result of a different query.
+  inQueryKey: SelectInput
+  # This is the notInQueryKey operator to specify a constraint to select the
+  # objects where a field do not equal to a key in the result of a different query.
+  notInQueryKey: SelectInput
+}
+
+# The CenterSphereInput type is used to specifiy a centerSphere operation on a geoWithin query.
+input CenterSphereInput {
+  # This is the center of the sphere.
+  center: GeoPointInput!
+  # This is the radius of the sphere.
+  distance: Float!
+}
+
+# The Class type is used to return the information about an object class.
+type Class {
+  # This is the name of the object class.
+  name: String!
+  # These are the schema's fields of the object class.
+  schemaFields: [SchemaField!]!
+}
+
+# The Comment object type is used in operations that involve outputting objects of Comment class.
+type Comment implements ParseObject {
+  # This is the object id.
+  id: ID!
+  # This is the date in which the object was created.
+  createdAt: Date!
+  # This is the date in which the object was las updated.
+  updatedAt: Date!
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object content.
+  content: String
+  # This is the object likes.
+  likes: Float
+  # This is the object owner.
+  owner: String
+  # This is the object post.
+  post: Post
+}
+
+# The CommentFindResult object type is used in the Comment find query to return the data of the matched objects.
+type CommentFindResult {
+  # This is the objects returned by the query
+  results: [Comment!]!
+  # This is the total matched objecs count that is returned when the count flag is set.
+  count: Int!
+}
+
+# The CommentOrder input type is used when sorting objects of the Comment class.
+enum CommentOrder {
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  ACL_ASC
+  ACL_DESC
+  content_ASC
+  content_DESC
+  likes_ASC
+  likes_DESC
+  owner_ASC
+  owner_DESC
+  post_ASC
+  post_DESC
+  id_ASC
+  id_DESC
+}
+
+# Allow to link OR add and link an object of the Comment class.
+input CommentPointerInput {
+  # Link an existing object from Comment class.
+  link: ID
+  # Create and link an object from Comment class.
+  createAndLink: CreateCommentFieldsInput
+}
+
+# The CommentPointerWhereInput input type is used in operations that involve
+# filtering objects by a pointer field to Comment class.
+input CommentPointerWhereInput {
+  # This is the equalTo operator to specify a constraint to select the objects
+  # where the value of a field equals to a specified value.
+  equalTo: ID
+  # This is the notEqualTo operator to specify a constraint to select the objects
+  # where the value of a field do not equal to a specified value.
+  notEqualTo: ID
+  # This is the in operator to specify a constraint to select the objects where
+  # the value of a field equals any value in the specified array.
+  in: [ID!]
+  # This is the notIn operator to specify a constraint to select the objects where
+  # the value of a field do not equal any value in the specified array.
+  notIn: [ID!]
+  # This is the exists operator to specify a constraint to select the objects where a field exists (or do not exist).
+  exists: Boolean
+  # This is the inQueryKey operator to specify a constraint to select the objects
+  # where a field equals to a key in the result of a different query.
+  inQueryKey: SelectInput
+  # This is the notInQueryKey operator to specify a constraint to select the
+  # objects where a field do not equal to a key in the result of a different query.
+  notInQueryKey: SelectInput
+  # This is the inQuery operator to specify a constraint to select the objects
+  # where a field equals to any of the ids in the result of a different query.
+  inQuery: SubqueryInput
+  # This is the notInQuery operator to specify a constraint to select the objects
+  # where a field do not equal to any of the ids in the result of a different query.
+  notInQuery: SubqueryInput
+}
+
+# Allow to add, remove, createAndAdd objects of the Comment class into a relation field.
+input CommentRelationInput {
+  # Add an existing object from the Comment class into the relation.
+  add: [ID!]
+  # Remove an existing object from the Comment class out of the relation.
+  remove: [ID!]
+  # Create and add an object of the Comment class into the relation.
+  createAndAdd: [CreateCommentFieldsInput!]
+}
+
+# The CommentWhereInput input type is used in operations that involve filtering objects of Comment class.
+input CommentWhereInput {
+  # This is the object createdAt.
+  createdAt: DateWhereInput
+  # This is the object updatedAt.
+  updatedAt: DateWhereInput
+  # This is the object ACL.
+  ACL: ObjectWhereInput
+  # This is the object content.
+  content: StringWhereInput
+  # This is the object likes.
+  likes: NumberWhereInput
+  # This is the object owner.
+  owner: StringWhereInput
+  # This is the object post.
+  post: PostPointerWhereInput
+  # This is the object id.
+  id: StringWhereInput
+  # This is the OR operator to compound constraints.
+  OR: [CommentWhereInput!]
+  # This is the AND operator to compound constraints.
+  AND: [CommentWhereInput!]
+  # This is the NOR operator to compound constraints.
+  NOR: [CommentWhereInput!]
+}
+
+# The CreateB4aCustomFieldFieldsInput input type is used in operations that
+# involve creation of objects in the B4aCustomField class.
+input CreateB4aCustomFieldFieldsInput {
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object objectClassName.
+  objectClassName: String
+  # This is the object objectClassFieldName.
+  objectClassFieldName: String
+  # This is the object title.
+  title: String
+  # This is the object isTableHidden.
+  isTableHidden: Boolean
+  # This is the object options.
+  options: String
+  # This is the object referencesLinkTitle.
+  referencesLinkTitle: String
+  # This is the object referenceTitleField.
+  referenceTitleField: String
+  # This is the object relevance.
+  relevance: Float
+  # This is the object isRequired.
+  isRequired: Boolean
+  # This is the object inputMask.
+  inputMask: String
+  # This is the object referencesLinkText.
+  referencesLinkText: String
+  # This is the object cssClassName.
+  cssClassName: String
+  # This is the object subType.
+  subType: String
+  # This is the object defaultValue.
+  defaultValue: String
+  # This is the object isFormHidden.
+  isFormHidden: String
+}
+
+# The CreateB4aMenuItemFieldsInput input type is used in operations that involve creation of objects in the B4aMenuItem class.
+input CreateB4aMenuItemFieldsInput {
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object title.
+  title: String
+  # This is the object objectClassName.
+  objectClassName: String
+  # This is the object relevance.
+  relevance: String
+  # This is the object isReadOnly.
+  isReadOnly: Boolean
+  # This is the object isHidden.
+  isHidden: Boolean
+  # This is the object editFormTitle.
+  editFormTitle: String
+  # This is the object addFormTitle.
+  addFormTitle: String
+}
+
+# The CreateB4aSettingFieldsInput input type is used in operations that involve creation of objects in the B4aSetting class.
+input CreateB4aSettingFieldsInput {
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object key.
+  key: String
+  # This is the object value.
+  value: String
+}
+
+# The CreateB4aVehicleFieldsInput input type is used in operations that involve creation of objects in the B4aVehicle class.
+input CreateB4aVehicleFieldsInput {
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object name.
+  name: String
+  # This is the object price.
+  price: Float
+  # This is the object color.
+  color: String
+}
+
+# The CreateCommentFieldsInput input type is used in operations that involve creation of objects in the Comment class.
+input CreateCommentFieldsInput {
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object content.
+  content: String
+  # This is the object likes.
+  likes: Float
+  # This is the object owner.
+  owner: String
+  # This is the object post.
+  post: PostPointerInput
+}
+
+# The CreateInstallationFieldsInput input type is used in operations that involve
+# creation of objects in the Installation class.
+input CreateInstallationFieldsInput {
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object installationId.
+  installationId: String
+  # This is the object deviceToken.
+  deviceToken: String
+  # This is the object channels.
+  channels: [Any]
+  # This is the object deviceType.
+  deviceType: String
+  # This is the object pushType.
+  pushType: String
+  # This is the object GCMSenderId.
+  GCMSenderId: String
+  # This is the object timeZone.
+  timeZone: String
+  # This is the object localeIdentifier.
+  localeIdentifier: String
+  # This is the object badge.
+  badge: Float
+  # This is the object appVersion.
+  appVersion: String
+  # This is the object appName.
+  appName: String
+  # This is the object appIdentifier.
+  appIdentifier: String
+  # This is the object parseVersion.
+  parseVersion: String
+}
+
+# The CreatePostFieldsInput input type is used in operations that involve creation of objects in the Post class.
+input CreatePostFieldsInput {
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object content.
+  content: String
+  # This is the object likes.
+  likes: Float
+  # This is the object tags.
+  tags: [Any]
+  # This is the object showComments.
+  showComments: Boolean
+}
+
+# The CreateRoleFieldsInput input type is used in operations that involve creation of objects in the Role class.
+input CreateRoleFieldsInput {
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object name.
+  name: String
+  # This is the object users.
+  users: UserRelationInput
+  # This is the object roles.
+  roles: RoleRelationInput
+}
+
+# The CreateSessionFieldsInput input type is used in operations that involve creation of objects in the Session class.
+input CreateSessionFieldsInput {
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object restricted.
+  restricted: Boolean
+  # This is the object user.
+  user: UserPointerInput
+  # This is the object installationId.
+  installationId: String
+  # This is the object sessionToken.
+  sessionToken: String
+  # This is the object expiresAt.
+  expiresAt: Date
+  # This is the object createdWith.
+  createdWith: Object
+}
+
+# The CreateUserFieldsInput input type is used in operations that involve creation of objects in the User class.
+input CreateUserFieldsInput {
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object username.
+  username: String
+  # This is the object password.
+  password: String
+  # This is the object email.
+  email: String
+  # This is the object emailVerified.
+  emailVerified: Boolean
+  # This is the object authData.
+  authData: Object
+}
+
+# The Date scalar type is used in operations and types that involve dates.
+scalar Date
+
+# The DateWhereInput input type is used in operations that involve filtering objects by a field of type Date.
+input DateWhereInput {
+  # This is the equalTo operator to specify a constraint to select the objects
+  # where the value of a field equals to a specified value.
+  equalTo: Date
+  # This is the notEqualTo operator to specify a constraint to select the objects
+  # where the value of a field do not equal to a specified value.
+  notEqualTo: Date
+  # This is the lessThan operator to specify a constraint to select the objects
+  # where the value of a field is less than a specified value.
+  lessThan: Date
+  # This is the lessThanOrEqualTo operator to specify a constraint to select the
+  # objects where the value of a field is less than or equal to a specified value.
+  lessThanOrEqualTo: Date
+  # This is the greaterThan operator to specify a constraint to select the objects
+  # where the value of a field is greater than a specified value.
+  greaterThan: Date
+  # This is the greaterThanOrEqualTo operator to specify a constraint to select
+  # the objects where the value of a field is greater than or equal to a specified value.
+  greaterThanOrEqualTo: Date
+  # This is the in operator to specify a constraint to select the objects where
+  # the value of a field equals any value in the specified array.
+  in: [Date]
+  # This is the notIn operator to specify a constraint to select the objects where
+  # the value of a field do not equal any value in the specified array.
+  notIn: [Date]
+  # This is the exists operator to specify a constraint to select the objects where a field exists (or do not exist).
+  exists: Boolean
+  # This is the inQueryKey operator to specify a constraint to select the objects
+  # where a field equals to a key in the result of a different query.
+  inQueryKey: SelectInput
+  # This is the notInQueryKey operator to specify a constraint to select the
+  # objects where a field do not equal to a key in the result of a different query.
+  notInQueryKey: SelectInput
+}
+
+# The Element object type is used to return array items' value.
+type Element {
+  # Return the value of the element in the array
+  value: Any!
+}
+
+# The File scalar type is used in operations and types that involve files.
+scalar File
+
+# The FileInfo object type is used to return the information about files.
+type FileInfo {
+  # This is the file name.
+  name: String!
+  # This is the url in which the file can be downloaded.
+  url: String!
+}
+
+# The FileWhereInput input type is used in operations that involve filtering objects by a field of type File.
+input FileWhereInput {
+  # This is the equalTo operator to specify a constraint to select the objects
+  # where the value of a field equals to a specified value.
+  equalTo: File
+  # This is the notEqualTo operator to specify a constraint to select the objects
+  # where the value of a field do not equal to a specified value.
+  notEqualTo: File
+  # This is the lessThan operator to specify a constraint to select the objects
+  # where the value of a field is less than a specified value.
+  lessThan: File
+  # This is the lessThanOrEqualTo operator to specify a constraint to select the
+  # objects where the value of a field is less than or equal to a specified value.
+  lessThanOrEqualTo: File
+  # This is the greaterThan operator to specify a constraint to select the objects
+  # where the value of a field is greater than a specified value.
+  greaterThan: File
+  # This is the greaterThanOrEqualTo operator to specify a constraint to select
+  # the objects where the value of a field is greater than or equal to a specified value.
+  greaterThanOrEqualTo: File
+  # This is the in operator to specify a constraint to select the objects where
+  # the value of a field equals any value in the specified array.
+  in: [File]
+  # This is the notIn operator to specify a constraint to select the objects where
+  # the value of a field do not equal any value in the specified array.
+  notIn: [File]
+  # This is the exists operator to specify a constraint to select the objects where a field exists (or do not exist).
+  exists: Boolean
+  # This is the inQueryKey operator to specify a constraint to select the objects
+  # where a field equals to a key in the result of a different query.
+  inQueryKey: SelectInput
+  # This is the notInQueryKey operator to specify a constraint to select the
+  # objects where a field do not equal to a key in the result of a different query.
+  notInQueryKey: SelectInput
+  # This is the matchesRegex operator to specify a constraint to select the
+  # objects where the value of a field matches a specified regular expression.
+  matchesRegex: String
+  # This is the options operator to specify optional flags (such as "i" and "m")
+  # to be added to a matchesRegex operation in the same set of constraints.
+  options: String
+}
+
+# The FindResult object type is used in the find queries to return the data of the matched objects.
+type FindResult {
+  # This is the objects returned by the query
+  results: [Object!]!
+  # This is the total matched objecs count that is returned when the count flag is set.
+  count: Int!
+}
+
+# The GeoIntersectsInput type is used to specify a geoIntersects operation on a constraint.
+input GeoIntersectsInput {
+  # This is the point to be specified.
+  point: GeoPointInput
+}
+
+# The GeoPoint object type is used to return the information about geo point fields.
+type GeoPoint {
+  # This is the latitude.
+  latitude: Float!
+  # This is the longitude.
+  longitude: Float!
+}
+
+# The GeoPointInput type is used in operations that involve inputting fields of type geo point.
+input GeoPointInput {
+  # This is the latitude.
+  latitude: Float!
+  # This is the longitude.
+  longitude: Float!
+}
+
+# The GeoPointWhereInput input type is used in operations that involve filtering objects by a field of type GeoPoint.
+input GeoPointWhereInput {
+  # This is the exists operator to specify a constraint to select the objects where a field exists (or do not exist).
+  exists: Boolean
+  # This is the nearSphere operator to specify a constraint to select the objects
+  # where the values of a geo point field is near to another geo point.
+  nearSphere: GeoPointInput
+  # This is the maxDistance operator to specify a constraint to select the objects
+  # where the values of a geo point field is at a max distance (in radians) from
+  # the geo point specified in the $nearSphere operator.
+  maxDistance: Float
+  # This is the maxDistanceInRadians operator to specify a constraint to select
+  # the objects where the values of a geo point field is at a max distance (in
+  # radians) from the geo point specified in the $nearSphere operator.
+  maxDistanceInRadians: Float
+  # This is the maxDistanceInMiles operator to specify a constraint to select the
+  # objects where the values of a geo point field is at a max distance (in miles)
+  # from the geo point specified in the $nearSphere operator.
+  maxDistanceInMiles: Float
+  # This is the maxDistanceInKilometers operator to specify a constraint to select
+  # the objects where the values of a geo point field is at a max distance (in
+  # kilometers) from the geo point specified in the $nearSphere operator.
+  maxDistanceInKilometers: Float
+  # This is the within operator to specify a constraint to select the objects
+  # where the values of a geo point field is within a specified box.
+  within: WithinInput
+  # This is the geoWithin operator to specify a constraint to select the objects
+  # where the values of a geo point field is within a specified polygon or sphere.
+  geoWithin: GeoWithinInput
+}
+
+# The GeoWithinInput type is used to specify a geoWithin operation on a constraint.
+input GeoWithinInput {
+  # This is the polygon to be specified.
+  polygon: [GeoPointInput!]
+  # This is the sphere to be specified.
+  centerSphere: CenterSphereInput
+}
+
+# The Installation object type is used in operations that involve outputting objects of Installation class.
+type Installation implements ParseObject {
+  # This is the object id.
+  id: ID!
+  # This is the date in which the object was created.
+  createdAt: Date!
+  # This is the date in which the object was las updated.
+  updatedAt: Date!
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object installationId.
+  installationId: String
+  # This is the object deviceToken.
+  deviceToken: String
+  # Use Inline Fragment on Array to get results: https://graphql.org/learn/queries/#inline-fragments
+  channels: [ArrayResult]
+  # This is the object deviceType.
+  deviceType: String
+  # This is the object pushType.
+  pushType: String
+  # This is the object GCMSenderId.
+  GCMSenderId: String
+  # This is the object timeZone.
+  timeZone: String
+  # This is the object localeIdentifier.
+  localeIdentifier: String
+  # This is the object badge.
+  badge: Float
+  # This is the object appVersion.
+  appVersion: String
+  # This is the object appName.
+  appName: String
+  # This is the object appIdentifier.
+  appIdentifier: String
+  # This is the object parseVersion.
+  parseVersion: String
+}
+
+# The InstallationFindResult object type is used in the Installation find query to return the data of the matched objects.
+type InstallationFindResult {
+  # This is the objects returned by the query
+  results: [Installation!]!
+  # This is the total matched objecs count that is returned when the count flag is set.
+  count: Int!
+}
+
+# The InstallationOrder input type is used when sorting objects of the Installation class.
+enum InstallationOrder {
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  ACL_ASC
+  ACL_DESC
+  installationId_ASC
+  installationId_DESC
+  deviceToken_ASC
+  deviceToken_DESC
+  channels_ASC
+  channels_DESC
+  deviceType_ASC
+  deviceType_DESC
+  pushType_ASC
+  pushType_DESC
+  GCMSenderId_ASC
+  GCMSenderId_DESC
+  timeZone_ASC
+  timeZone_DESC
+  localeIdentifier_ASC
+  localeIdentifier_DESC
+  badge_ASC
+  badge_DESC
+  appVersion_ASC
+  appVersion_DESC
+  appName_ASC
+  appName_DESC
+  appIdentifier_ASC
+  appIdentifier_DESC
+  parseVersion_ASC
+  parseVersion_DESC
+  id_ASC
+  id_DESC
+}
+
+# Allow to link OR add and link an object of the Installation class.
+input InstallationPointerInput {
+  # Link an existing object from Installation class.
+  link: ID
+  # Create and link an object from Installation class.
+  createAndLink: CreateInstallationFieldsInput
+}
+
+# The InstallationPointerWhereInput input type is used in operations that involve
+# filtering objects by a pointer field to Installation class.
+input InstallationPointerWhereInput {
+  # This is the equalTo operator to specify a constraint to select the objects
+  # where the value of a field equals to a specified value.
+  equalTo: ID
+  # This is the notEqualTo operator to specify a constraint to select the objects
+  # where the value of a field do not equal to a specified value.
+  notEqualTo: ID
+  # This is the in operator to specify a constraint to select the objects where
+  # the value of a field equals any value in the specified array.
+  in: [ID!]
+  # This is the notIn operator to specify a constraint to select the objects where
+  # the value of a field do not equal any value in the specified array.
+  notIn: [ID!]
+  # This is the exists operator to specify a constraint to select the objects where a field exists (or do not exist).
+  exists: Boolean
+  # This is the inQueryKey operator to specify a constraint to select the objects
+  # where a field equals to a key in the result of a different query.
+  inQueryKey: SelectInput
+  # This is the notInQueryKey operator to specify a constraint to select the
+  # objects where a field do not equal to a key in the result of a different query.
+  notInQueryKey: SelectInput
+  # This is the inQuery operator to specify a constraint to select the objects
+  # where a field equals to any of the ids in the result of a different query.
+  inQuery: SubqueryInput
+  # This is the notInQuery operator to specify a constraint to select the objects
+  # where a field do not equal to any of the ids in the result of a different query.
+  notInQuery: SubqueryInput
+}
+
+# Allow to add, remove, createAndAdd objects of the Installation class into a relation field.
+input InstallationRelationInput {
+  # Add an existing object from the Installation class into the relation.
+  add: [ID!]
+  # Remove an existing object from the Installation class out of the relation.
+  remove: [ID!]
+  # Create and add an object of the Installation class into the relation.
+  createAndAdd: [CreateInstallationFieldsInput!]
+}
+
+# The InstallationWhereInput input type is used in operations that involve filtering objects of Installation class.
+input InstallationWhereInput {
+  # This is the object createdAt.
+  createdAt: DateWhereInput
+  # This is the object updatedAt.
+  updatedAt: DateWhereInput
+  # This is the object ACL.
+  ACL: ObjectWhereInput
+  # This is the object installationId.
+  installationId: StringWhereInput
+  # This is the object deviceToken.
+  deviceToken: StringWhereInput
+  # This is the object channels.
+  channels: ArrayWhereInput
+  # This is the object deviceType.
+  deviceType: StringWhereInput
+  # This is the object pushType.
+  pushType: StringWhereInput
+  # This is the object GCMSenderId.
+  GCMSenderId: StringWhereInput
+  # This is the object timeZone.
+  timeZone: StringWhereInput
+  # This is the object localeIdentifier.
+  localeIdentifier: StringWhereInput
+  # This is the object badge.
+  badge: NumberWhereInput
+  # This is the object appVersion.
+  appVersion: StringWhereInput
+  # This is the object appName.
+  appName: StringWhereInput
+  # This is the object appIdentifier.
+  appIdentifier: StringWhereInput
+  # This is the object parseVersion.
+  parseVersion: StringWhereInput
+  # This is the object id.
+  id: StringWhereInput
+  # This is the OR operator to compound constraints.
+  OR: [InstallationWhereInput!]
+  # This is the AND operator to compound constraints.
+  AND: [InstallationWhereInput!]
+  # This is the NOR operator to compound constraints.
+  NOR: [InstallationWhereInput!]
+}
+
+# An entry from an object, i.e., a pair of key and value.
+input KeyValueInput {
+  # The key used to retrieve the value of this entry.
+  key: String!
+  # The value of the entry. Could be any type of scalar data.
+  value: Any!
+}
+
+# The LogInFieldsInput input type is used to login.
+input LogInFieldsInput {
+  # This is the username used to log the user in.
+  username: String!
+  # This is the password used to log the user in.
+  password: String!
+}
+
+# Mutation is the top level type for mutations.
+type Mutation {
+  # The createInstallation mutation can be used to create a new object of the Installation class.
+  createInstallation(
+    # These are the fields used to create the object.
+    fields: CreateInstallationFieldsInput
+  ): Installation!
+  # The updateInstallation mutation can be used to update an object of the Installation class.
+  updateInstallation(
+    # This is the object id.
+    id: ID!
+    # These are the fields used to update the object.
+    fields: UpdateInstallationFieldsInput
+  ): Installation!
+  # The deleteInstallation mutation can be used to delete an object of the Installation class.
+  deleteInstallation(
+    # This is the object id.
+    id: ID!
+  ): Installation!
+  # The createRole mutation can be used to create a new object of the Role class.
+  createRole(
+    # These are the fields used to create the object.
+    fields: CreateRoleFieldsInput
+  ): Role!
+  # The updateRole mutation can be used to update an object of the Role class.
+  updateRole(
+    # This is the object id.
+    id: ID!
+    # These are the fields used to update the object.
+    fields: UpdateRoleFieldsInput
+  ): Role!
+  # The deleteRole mutation can be used to delete an object of the Role class.
+  deleteRole(
+    # This is the object id.
+    id: ID!
+  ): Role!
+  # The createSession mutation can be used to create a new object of the Session class.
+  createSession(
+    # These are the fields used to create the object.
+    fields: CreateSessionFieldsInput
+  ): Session!
+  # The updateSession mutation can be used to update an object of the Session class.
+  updateSession(
+    # This is the object id.
+    id: ID!
+    # These are the fields used to update the object.
+    fields: UpdateSessionFieldsInput
+  ): Session!
+  # The deleteSession mutation can be used to delete an object of the Session class.
+  deleteSession(
+    # This is the object id.
+    id: ID!
+  ): Session!
+  # The createUser mutation can be used to create a new object of the User class.
+  createUser(
+    # These are the fields used to create the object.
+    fields: CreateUserFieldsInput
+  ): User!
+  # The updateUser mutation can be used to update an object of the User class.
+  updateUser(
+    # This is the object id.
+    id: ID!
+    # These are the fields used to update the object.
+    fields: UpdateUserFieldsInput
+  ): User!
+  # The deleteUser mutation can be used to delete an object of the User class.
+  deleteUser(
+    # This is the object id.
+    id: ID!
+  ): User!
+  # The createB4aCustomField mutation can be used to create a new object of the B4aCustomField class.
+  createB4aCustomField(
+    # These are the fields used to create the object.
+    fields: CreateB4aCustomFieldFieldsInput
+  ): B4aCustomField!
+  # The updateB4aCustomField mutation can be used to update an object of the B4aCustomField class.
+  updateB4aCustomField(
+    # This is the object id.
+    id: ID!
+    # These are the fields used to update the object.
+    fields: UpdateB4aCustomFieldFieldsInput
+  ): B4aCustomField!
+  # The deleteB4aCustomField mutation can be used to delete an object of the B4aCustomField class.
+  deleteB4aCustomField(
+    # This is the object id.
+    id: ID!
+  ): B4aCustomField!
+  # The createB4aMenuItem mutation can be used to create a new object of the B4aMenuItem class.
+  createB4aMenuItem(
+    # These are the fields used to create the object.
+    fields: CreateB4aMenuItemFieldsInput
+  ): B4aMenuItem!
+  # The updateB4aMenuItem mutation can be used to update an object of the B4aMenuItem class.
+  updateB4aMenuItem(
+    # This is the object id.
+    id: ID!
+    # These are the fields used to update the object.
+    fields: UpdateB4aMenuItemFieldsInput
+  ): B4aMenuItem!
+  # The deleteB4aMenuItem mutation can be used to delete an object of the B4aMenuItem class.
+  deleteB4aMenuItem(
+    # This is the object id.
+    id: ID!
+  ): B4aMenuItem!
+  # The createB4aSetting mutation can be used to create a new object of the B4aSetting class.
+  createB4aSetting(
+    # These are the fields used to create the object.
+    fields: CreateB4aSettingFieldsInput
+  ): B4aSetting!
+  # The updateB4aSetting mutation can be used to update an object of the B4aSetting class.
+  updateB4aSetting(
+    # This is the object id.
+    id: ID!
+    # These are the fields used to update the object.
+    fields: UpdateB4aSettingFieldsInput
+  ): B4aSetting!
+  # The deleteB4aSetting mutation can be used to delete an object of the B4aSetting class.
+  deleteB4aSetting(
+    # This is the object id.
+    id: ID!
+  ): B4aSetting!
+  # The createB4aVehicle mutation can be used to create a new object of the B4aVehicle class.
+  createB4aVehicle(
+    # These are the fields used to create the object.
+    fields: CreateB4aVehicleFieldsInput
+  ): B4aVehicle!
+  # The updateB4aVehicle mutation can be used to update an object of the B4aVehicle class.
+  updateB4aVehicle(
+    # This is the object id.
+    id: ID!
+    # These are the fields used to update the object.
+    fields: UpdateB4aVehicleFieldsInput
+  ): B4aVehicle!
+  # The deleteB4aVehicle mutation can be used to delete an object of the B4aVehicle class.
+  deleteB4aVehicle(
+    # This is the object id.
+    id: ID!
+  ): B4aVehicle!
+  # The createComment mutation can be used to create a new object of the Comment class.
+  createComment(
+    # These are the fields used to create the object.
+    fields: CreateCommentFieldsInput
+  ): Comment!
+  # The updateComment mutation can be used to update an object of the Comment class.
+  updateComment(
+    # This is the object id.
+    id: ID!
+    # These are the fields used to update the object.
+    fields: UpdateCommentFieldsInput
+  ): Comment!
+  # The deleteComment mutation can be used to delete an object of the Comment class.
+  deleteComment(
+    # This is the object id.
+    id: ID!
+  ): Comment!
+  # The createPost mutation can be used to create a new object of the Post class.
+  createPost(
+    # These are the fields used to create the object.
+    fields: CreatePostFieldsInput
+  ): Post!
+  # The updatePost mutation can be used to update an object of the Post class.
+  updatePost(
+    # This is the object id.
+    id: ID!
+    # These are the fields used to update the object.
+    fields: UpdatePostFieldsInput
+  ): Post!
+  # The deletePost mutation can be used to delete an object of the Post class.
+  deletePost(
+    # This is the object id.
+    id: ID!
+  ): Post!
+  # The create mutation can be used to create and upload a new file.
+  createFile(
+    # This is the new file to be created and uploaded
+    upload: Upload!
+  ): FileInfo!
+  # The signUp mutation can be used to sign the user up.
+  signUp(fields: SignUpFieldsInput): Viewer!
+  # The logIn mutation can be used to log the user in.
+  logIn(
+    # This is data needed to login
+    fields: LogInFieldsInput
+  ): Viewer!
+  # The logOut mutation can be used to log the user out.
+  logOut: Viewer!
+  # The createClass mutation can be used to create the schema for a new object class.
+  createClass(
+    # This is the name of the object class.
+    name: String!
+    # These are the schema's fields of the object class.
+    schemaFields: SchemaFieldsInput
+  ): Class!
+  # The updateClass mutation can be used to update the schema for an existing object class.
+  updateClass(
+    # This is the name of the object class.
+    name: String!
+    # These are the schema's fields of the object class.
+    schemaFields: SchemaFieldsInput
+  ): Class!
+  # The deleteClass mutation can be used to delete an existing object class.
+  deleteClass(
+    # This is the name of the object class.
+    name: String!
+  ): Class!
+}
+
+# The NumberWhereInput input type is used in operations that involve filtering objects by a field of type Number.
+input NumberWhereInput {
+  # This is the equalTo operator to specify a constraint to select the objects
+  # where the value of a field equals to a specified value.
+  equalTo: Float
+  # This is the notEqualTo operator to specify a constraint to select the objects
+  # where the value of a field do not equal to a specified value.
+  notEqualTo: Float
+  # This is the lessThan operator to specify a constraint to select the objects
+  # where the value of a field is less than a specified value.
+  lessThan: Float
+  # This is the lessThanOrEqualTo operator to specify a constraint to select the
+  # objects where the value of a field is less than or equal to a specified value.
+  lessThanOrEqualTo: Float
+  # This is the greaterThan operator to specify a constraint to select the objects
+  # where the value of a field is greater than a specified value.
+  greaterThan: Float
+  # This is the greaterThanOrEqualTo operator to specify a constraint to select
+  # the objects where the value of a field is greater than or equal to a specified value.
+  greaterThanOrEqualTo: Float
+  # This is the in operator to specify a constraint to select the objects where
+  # the value of a field equals any value in the specified array.
+  in: [Float]
+  # This is the notIn operator to specify a constraint to select the objects where
+  # the value of a field do not equal any value in the specified array.
+  notIn: [Float]
+  # This is the exists operator to specify a constraint to select the objects where a field exists (or do not exist).
+  exists: Boolean
+  # This is the inQueryKey operator to specify a constraint to select the objects
+  # where a field equals to a key in the result of a different query.
+  inQueryKey: SelectInput
+  # This is the notInQueryKey operator to specify a constraint to select the
+  # objects where a field do not equal to a key in the result of a different query.
+  notInQueryKey: SelectInput
+}
+
+# The Object scalar type is used in operations and types that involve objects.
+scalar Object
+
+# The ObjectWhereInput input type is used in operations that involve filtering result by a field of type Object.
+input ObjectWhereInput {
+  # This is the equalTo operator to specify a constraint to select the objects
+  # where the value of a field equals to a specified value.
+  equalTo: KeyValueInput
+  # This is the notEqualTo operator to specify a constraint to select the objects
+  # where the value of a field do not equal to a specified value.
+  notEqualTo: KeyValueInput
+  # This is the in operator to specify a constraint to select the objects where
+  # the value of a field equals any value in the specified array.
+  in: [KeyValueInput]
+  # This is the notIn operator to specify a constraint to select the objects where
+  # the value of a field do not equal any value in the specified array.
+  notIn: [KeyValueInput]
+  # This is the lessThan operator to specify a constraint to select the objects
+  # where the value of a field is less than a specified value.
+  lessThan: KeyValueInput
+  # This is the lessThanOrEqualTo operator to specify a constraint to select the
+  # objects where the value of a field is less than or equal to a specified value.
+  lessThanOrEqualTo: KeyValueInput
+  # This is the greaterThan operator to specify a constraint to select the objects
+  # where the value of a field is greater than a specified value.
+  greaterThan: KeyValueInput
+  # This is the greaterThanOrEqualTo operator to specify a constraint to select
+  # the objects where the value of a field is greater than or equal to a specified value.
+  greaterThanOrEqualTo: KeyValueInput
+  # This is the exists operator to specify a constraint to select the objects where a field exists (or do not exist).
+  exists: Boolean
+  # This is the inQueryKey operator to specify a constraint to select the objects
+  # where a field equals to a key in the result of a different query.
+  inQueryKey: SelectInput
+  # This is the notInQueryKey operator to specify a constraint to select the
+  # objects where a field do not equal to a key in the result of a different query.
+  notInQueryKey: SelectInput
+}
+
+# The ParseObject interface type is used as a base type for the auto generated object types.
+interface ParseObject {
+  # This is the object id.
+  id: ID!
+  # This is the date in which the object was created.
+  createdAt: Date!
+  # This is the date in which the object was las updated.
+  updatedAt: Date!
+  # This is the access control list of the object.
+  ACL: Object
+}
+
+# The PointerFieldInput is used to specify a field of type pointer for an object class schema.
+input PointerFieldInput {
+  # This is the field name.
+  name: String!
+  # This is the name of the target class for the field.
+  targetClassName: String!
+}
+
+# The PolygonWhereInput input type is used in operations that involve filtering objects by a field of type Polygon.
+input PolygonWhereInput {
+  # This is the exists operator to specify a constraint to select the objects where a field exists (or do not exist).
+  exists: Boolean
+  # This is the geoIntersects operator to specify a constraint to select the
+  # objects where the values of a polygon field intersect a specified point.
+  geoIntersects: GeoIntersectsInput
+}
+
+# The Post object type is used in operations that involve outputting objects of Post class.
+type Post implements ParseObject {
+  # This is the object id.
+  id: ID!
+  # This is the date in which the object was created.
+  createdAt: Date!
+  # This is the date in which the object was las updated.
+  updatedAt: Date!
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object content.
+  content: String
+  # This is the object likes.
+  likes: Float
+  # Use Inline Fragment on Array to get results: https://graphql.org/learn/queries/#inline-fragments
+  tags: [ArrayResult]
+  # This is the object showComments.
+  showComments: Boolean
+}
+
+# The PostFindResult object type is used in the Post find query to return the data of the matched objects.
+type PostFindResult {
+  # This is the objects returned by the query
+  results: [Post!]!
+  # This is the total matched objecs count that is returned when the count flag is set.
+  count: Int!
+}
+
+# The PostOrder input type is used when sorting objects of the Post class.
+enum PostOrder {
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  ACL_ASC
+  ACL_DESC
+  content_ASC
+  content_DESC
+  likes_ASC
+  likes_DESC
+  tags_ASC
+  tags_DESC
+  showComments_ASC
+  showComments_DESC
+  id_ASC
+  id_DESC
+}
+
+# Allow to link OR add and link an object of the Post class.
+input PostPointerInput {
+  # Link an existing object from Post class.
+  link: ID
+  # Create and link an object from Post class.
+  createAndLink: CreatePostFieldsInput
+}
+
+# The PostPointerWhereInput input type is used in operations that involve filtering objects by a pointer field to Post class.
+input PostPointerWhereInput {
+  # This is the equalTo operator to specify a constraint to select the objects
+  # where the value of a field equals to a specified value.
+  equalTo: ID
+  # This is the notEqualTo operator to specify a constraint to select the objects
+  # where the value of a field do not equal to a specified value.
+  notEqualTo: ID
+  # This is the in operator to specify a constraint to select the objects where
+  # the value of a field equals any value in the specified array.
+  in: [ID!]
+  # This is the notIn operator to specify a constraint to select the objects where
+  # the value of a field do not equal any value in the specified array.
+  notIn: [ID!]
+  # This is the exists operator to specify a constraint to select the objects where a field exists (or do not exist).
+  exists: Boolean
+  # This is the inQueryKey operator to specify a constraint to select the objects
+  # where a field equals to a key in the result of a different query.
+  inQueryKey: SelectInput
+  # This is the notInQueryKey operator to specify a constraint to select the
+  # objects where a field do not equal to a key in the result of a different query.
+  notInQueryKey: SelectInput
+  # This is the inQuery operator to specify a constraint to select the objects
+  # where a field equals to any of the ids in the result of a different query.
+  inQuery: SubqueryInput
+  # This is the notInQuery operator to specify a constraint to select the objects
+  # where a field do not equal to any of the ids in the result of a different query.
+  notInQuery: SubqueryInput
+}
+
+# Allow to add, remove, createAndAdd objects of the Post class into a relation field.
+input PostRelationInput {
+  # Add an existing object from the Post class into the relation.
+  add: [ID!]
+  # Remove an existing object from the Post class out of the relation.
+  remove: [ID!]
+  # Create and add an object of the Post class into the relation.
+  createAndAdd: [CreatePostFieldsInput!]
+}
+
+# The PostWhereInput input type is used in operations that involve filtering objects of Post class.
+input PostWhereInput {
+  # This is the object createdAt.
+  createdAt: DateWhereInput
+  # This is the object updatedAt.
+  updatedAt: DateWhereInput
+  # This is the object ACL.
+  ACL: ObjectWhereInput
+  # This is the object content.
+  content: StringWhereInput
+  # This is the object likes.
+  likes: NumberWhereInput
+  # This is the object tags.
+  tags: ArrayWhereInput
+  # This is the object showComments.
+  showComments: BooleanWhereInput
+  # This is the object id.
+  id: StringWhereInput
+  # This is the OR operator to compound constraints.
+  OR: [PostWhereInput!]
+  # This is the AND operator to compound constraints.
+  AND: [PostWhereInput!]
+  # This is the NOR operator to compound constraints.
+  NOR: [PostWhereInput!]
+}
+
+# Query is the top level type for queries.
+type Query {
+  # The installation query can be used to get an object of the Installation class by its id.
+  installation(
+    # This is the object id.
+    id: ID!
+    # The read options for the query to be executed.
+    options: ReadOptionsInput
+  ): Installation!
+  # The installations query can be used to find objects of the Installation class.
+  installations(
+    # These are the conditions that the objects need to match in order to be found.
+    where: InstallationWhereInput
+    # The fields to be used when sorting the data fetched.
+    order: [InstallationOrder!]
+    # This is the number of objects that must be skipped to return.
+    skip: Int
+    # This is the limit number of objects that must be returned.
+    limit: Int
+    # The read options for the query to be executed.
+    options: ReadOptionsInput
+  ): InstallationFindResult!
+  # The role query can be used to get an object of the Role class by its id.
+  role(
+    # This is the object id.
+    id: ID!
+    # The read options for the query to be executed.
+    options: ReadOptionsInput
+  ): Role!
+  # The roles query can be used to find objects of the Role class.
+  roles(
+    # These are the conditions that the objects need to match in order to be found.
+    where: RoleWhereInput
+    # The fields to be used when sorting the data fetched.
+    order: [RoleOrder!]
+    # This is the number of objects that must be skipped to return.
+    skip: Int
+    # This is the limit number of objects that must be returned.
+    limit: Int
+    # The read options for the query to be executed.
+    options: ReadOptionsInput
+  ): RoleFindResult!
+  # The session query can be used to get an object of the Session class by its id.
+  session(
+    # This is the object id.
+    id: ID!
+    # The read options for the query to be executed.
+    options: ReadOptionsInput
+  ): Session!
+  # The sessions query can be used to find objects of the Session class.
+  sessions(
+    # These are the conditions that the objects need to match in order to be found.
+    where: SessionWhereInput
+    # The fields to be used when sorting the data fetched.
+    order: [SessionOrder!]
+    # This is the number of objects that must be skipped to return.
+    skip: Int
+    # This is the limit number of objects that must be returned.
+    limit: Int
+    # The read options for the query to be executed.
+    options: ReadOptionsInput
+  ): SessionFindResult!
+  # The user query can be used to get an object of the User class by its id.
+  user(
+    # This is the object id.
+    id: ID!
+    # The read options for the query to be executed.
+    options: ReadOptionsInput
+  ): User!
+  # The users query can be used to find objects of the User class.
+  users(
+    # These are the conditions that the objects need to match in order to be found.
+    where: UserWhereInput
+    # The fields to be used when sorting the data fetched.
+    order: [UserOrder!]
+    # This is the number of objects that must be skipped to return.
+    skip: Int
+    # This is the limit number of objects that must be returned.
+    limit: Int
+    # The read options for the query to be executed.
+    options: ReadOptionsInput
+  ): UserFindResult!
+  # The b4aCustomField query can be used to get an object of the B4aCustomField class by its id.
+  b4aCustomField(
+    # This is the object id.
+    id: ID!
+    # The read options for the query to be executed.
+    options: ReadOptionsInput
+  ): B4aCustomField!
+  # The b4aCustomFields query can be used to find objects of the B4aCustomField class.
+  b4aCustomFields(
+    # These are the conditions that the objects need to match in order to be found.
+    where: B4aCustomFieldWhereInput
+    # The fields to be used when sorting the data fetched.
+    order: [B4aCustomFieldOrder!]
+    # This is the number of objects that must be skipped to return.
+    skip: Int
+    # This is the limit number of objects that must be returned.
+    limit: Int
+    # The read options for the query to be executed.
+    options: ReadOptionsInput
+  ): B4aCustomFieldFindResult!
+  # The b4aMenuItem query can be used to get an object of the B4aMenuItem class by its id.
+  b4aMenuItem(
+    # This is the object id.
+    id: ID!
+    # The read options for the query to be executed.
+    options: ReadOptionsInput
+  ): B4aMenuItem!
+  # The b4aMenuItems query can be used to find objects of the B4aMenuItem class.
+  b4aMenuItems(
+    # These are the conditions that the objects need to match in order to be found.
+    where: B4aMenuItemWhereInput
+    # The fields to be used when sorting the data fetched.
+    order: [B4aMenuItemOrder!]
+    # This is the number of objects that must be skipped to return.
+    skip: Int
+    # This is the limit number of objects that must be returned.
+    limit: Int
+    # The read options for the query to be executed.
+    options: ReadOptionsInput
+  ): B4aMenuItemFindResult!
+  # The b4aSetting query can be used to get an object of the B4aSetting class by its id.
+  b4aSetting(
+    # This is the object id.
+    id: ID!
+    # The read options for the query to be executed.
+    options: ReadOptionsInput
+  ): B4aSetting!
+  # The b4aSettings query can be used to find objects of the B4aSetting class.
+  b4aSettings(
+    # These are the conditions that the objects need to match in order to be found.
+    where: B4aSettingWhereInput
+    # The fields to be used when sorting the data fetched.
+    order: [B4aSettingOrder!]
+    # This is the number of objects that must be skipped to return.
+    skip: Int
+    # This is the limit number of objects that must be returned.
+    limit: Int
+    # The read options for the query to be executed.
+    options: ReadOptionsInput
+  ): B4aSettingFindResult!
+  # The b4aVehicle query can be used to get an object of the B4aVehicle class by its id.
+  b4aVehicle(
+    # This is the object id.
+    id: ID!
+    # The read options for the query to be executed.
+    options: ReadOptionsInput
+  ): B4aVehicle!
+  # The b4aVehicles query can be used to find objects of the B4aVehicle class.
+  b4aVehicles(
+    # These are the conditions that the objects need to match in order to be found.
+    where: B4aVehicleWhereInput
+    # The fields to be used when sorting the data fetched.
+    order: [B4aVehicleOrder!]
+    # This is the number of objects that must be skipped to return.
+    skip: Int
+    # This is the limit number of objects that must be returned.
+    limit: Int
+    # The read options for the query to be executed.
+    options: ReadOptionsInput
+  ): B4aVehicleFindResult!
+  # The comment query can be used to get an object of the Comment class by its id.
+  comment(
+    # This is the object id.
+    id: ID!
+    # The read options for the query to be executed.
+    options: ReadOptionsInput
+  ): Comment!
+  # The comments query can be used to find objects of the Comment class.
+  comments(
+    # These are the conditions that the objects need to match in order to be found.
+    where: CommentWhereInput
+    # The fields to be used when sorting the data fetched.
+    order: [CommentOrder!]
+    # This is the number of objects that must be skipped to return.
+    skip: Int
+    # This is the limit number of objects that must be returned.
+    limit: Int
+    # The read options for the query to be executed.
+    options: ReadOptionsInput
+  ): CommentFindResult!
+  # The post query can be used to get an object of the Post class by its id.
+  post(
+    # This is the object id.
+    id: ID!
+    # The read options for the query to be executed.
+    options: ReadOptionsInput
+  ): Post!
+  # The posts query can be used to find objects of the Post class.
+  posts(
+    # These are the conditions that the objects need to match in order to be found.
+    where: PostWhereInput
+    # The fields to be used when sorting the data fetched.
+    order: [PostOrder!]
+    # This is the number of objects that must be skipped to return.
+    skip: Int
+    # This is the limit number of objects that must be returned.
+    limit: Int
+    # The read options for the query to be executed.
+    options: ReadOptionsInput
+  ): PostFindResult!
+  # The health query can be used to check if the server is up and running.
+  health: Boolean!
+  # The viewer query can be used to return the current user data.
+  viewer: Viewer!
+  # The class query can be used to retrieve an existing object class.
+  class(
+    # This is the name of the object class.
+    name: String!
+  ): Class!
+  # The classes query can be used to retrieve the existing object classes.
+  classes: [Class!]!
+}
+
+# The ReadOptionsInputt type is used in queries in order to set the read preferences.
+input ReadOptionsInput {
+  # The read preference for the main query to be executed.
+  readPreference: ReadPreference
+  # The read preference for the queries to be executed to include fields.
+  includeReadPreference: ReadPreference
+  # The read preference for the subqueries that may be required.
+  subqueryReadPreference: ReadPreference
+}
+
+# The ReadPreference enum type is used in queries in order to select in which database replica the operation must run.
+enum ReadPreference {
+  PRIMARY
+  PRIMARY_PREFERRED
+  SECONDARY
+  SECONDARY_PREFERRED
+  NEAREST
+}
+
+# The RelationFieldInput is used to specify a field of type relation for an object class schema.
+input RelationFieldInput {
+  # This is the field name.
+  name: String!
+  # This is the name of the target class for the field.
+  targetClassName: String!
+}
+
+# The Role object type is used in operations that involve outputting objects of Role class.
+type Role implements ParseObject {
+  # This is the object id.
+  id: ID!
+  # This is the date in which the object was created.
+  createdAt: Date!
+  # This is the date in which the object was las updated.
+  updatedAt: Date!
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object name.
+  name: String
+  # This is the object users.
+  users(
+    # These are the conditions that the objects need to match in order to be found.
+    where: UserWhereInput
+    # The fields to be used when sorting the data fetched.
+    order: [UserOrder!]
+    # This is the number of objects that must be skipped to return.
+    skip: Int
+    # This is the limit number of objects that must be returned.
+    limit: Int
+    # The read options for the query to be executed.
+    options: ReadOptionsInput
+  ): UserFindResult!
+  # This is the object roles.
+  roles(
+    # These are the conditions that the objects need to match in order to be found.
+    where: RoleWhereInput
+    # The fields to be used when sorting the data fetched.
+    order: [RoleOrder!]
+    # This is the number of objects that must be skipped to return.
+    skip: Int
+    # This is the limit number of objects that must be returned.
+    limit: Int
+    # The read options for the query to be executed.
+    options: ReadOptionsInput
+  ): RoleFindResult!
+}
+
+# The RoleFindResult object type is used in the Role find query to return the data of the matched objects.
+type RoleFindResult {
+  # This is the objects returned by the query
+  results: [Role!]!
+  # This is the total matched objecs count that is returned when the count flag is set.
+  count: Int!
+}
+
+# The RoleOrder input type is used when sorting objects of the Role class.
+enum RoleOrder {
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  ACL_ASC
+  ACL_DESC
+  name_ASC
+  name_DESC
+  users_ASC
+  users_DESC
+  roles_ASC
+  roles_DESC
+  id_ASC
+  id_DESC
+}
+
+# Allow to link OR add and link an object of the Role class.
+input RolePointerInput {
+  # Link an existing object from Role class.
+  link: ID
+  # Create and link an object from Role class.
+  createAndLink: CreateRoleFieldsInput
+}
+
+# The RolePointerWhereInput input type is used in operations that involve filtering objects by a pointer field to Role class.
+input RolePointerWhereInput {
+  # This is the equalTo operator to specify a constraint to select the objects
+  # where the value of a field equals to a specified value.
+  equalTo: ID
+  # This is the notEqualTo operator to specify a constraint to select the objects
+  # where the value of a field do not equal to a specified value.
+  notEqualTo: ID
+  # This is the in operator to specify a constraint to select the objects where
+  # the value of a field equals any value in the specified array.
+  in: [ID!]
+  # This is the notIn operator to specify a constraint to select the objects where
+  # the value of a field do not equal any value in the specified array.
+  notIn: [ID!]
+  # This is the exists operator to specify a constraint to select the objects where a field exists (or do not exist).
+  exists: Boolean
+  # This is the inQueryKey operator to specify a constraint to select the objects
+  # where a field equals to a key in the result of a different query.
+  inQueryKey: SelectInput
+  # This is the notInQueryKey operator to specify a constraint to select the
+  # objects where a field do not equal to a key in the result of a different query.
+  notInQueryKey: SelectInput
+  # This is the inQuery operator to specify a constraint to select the objects
+  # where a field equals to any of the ids in the result of a different query.
+  inQuery: SubqueryInput
+  # This is the notInQuery operator to specify a constraint to select the objects
+  # where a field do not equal to any of the ids in the result of a different query.
+  notInQuery: SubqueryInput
+}
+
+# Allow to add, remove, createAndAdd objects of the Role class into a relation field.
+input RoleRelationInput {
+  # Add an existing object from the Role class into the relation.
+  add: [ID!]
+  # Remove an existing object from the Role class out of the relation.
+  remove: [ID!]
+  # Create and add an object of the Role class into the relation.
+  createAndAdd: [CreateRoleFieldsInput!]
+}
+
+# The RoleWhereInput input type is used in operations that involve filtering objects of Role class.
+input RoleWhereInput {
+  # This is the object createdAt.
+  createdAt: DateWhereInput
+  # This is the object updatedAt.
+  updatedAt: DateWhereInput
+  # This is the object ACL.
+  ACL: ObjectWhereInput
+  # This is the object name.
+  name: StringWhereInput
+  # This is the object id.
+  id: StringWhereInput
+  # This is the OR operator to compound constraints.
+  OR: [RoleWhereInput!]
+  # This is the AND operator to compound constraints.
+  AND: [RoleWhereInput!]
+  # This is the NOR operator to compound constraints.
+  NOR: [RoleWhereInput!]
+}
+
+# The SchemaACLField is used to return information of an ACL field.
+type SchemaACLField implements SchemaField {
+  # This is the field name.
+  name: String!
+}
+
+# The SchemaArrayField is used to return information of an Array field.
+type SchemaArrayField implements SchemaField {
+  # This is the field name.
+  name: String!
+}
+
+# The SchemaArrayFieldInput is used to specify a field of type array for an object class schema.
+input SchemaArrayFieldInput {
+  # This is the field name.
+  name: String!
+}
+
+# The SchemaBooleanField is used to return information of a Boolean field.
+type SchemaBooleanField implements SchemaField {
+  # This is the field name.
+  name: String!
+}
+
+# The SchemaBooleanFieldInput is used to specify a field of type boolean for an object class schema.
+input SchemaBooleanFieldInput {
+  # This is the field name.
+  name: String!
+}
+
+# The SchemaBytesField is used to return information of a Bytes field.
+type SchemaBytesField implements SchemaField {
+  # This is the field name.
+  name: String!
+}
+
+# The SchemaBytesFieldInput is used to specify a field of type bytes for an object class schema.
+input SchemaBytesFieldInput {
+  # This is the field name.
+  name: String!
+}
+
+# The SchemaDateField is used to return information of a Date field.
+type SchemaDateField implements SchemaField {
+  # This is the field name.
+  name: String!
+}
+
+# The SchemaDateFieldInput is used to specify a field of type date for an object class schema.
+input SchemaDateFieldInput {
+  # This is the field name.
+  name: String!
+}
+
+# The SchemaField interface type is used as a base type for the different supported fields of an object class schema.
+interface SchemaField {
+  # This is the field name.
+  name: String!
+}
+
+# The SchemaFieldInput is used to specify a field of an object class schema.
+input SchemaFieldInput {
+  # This is the field name.
+  name: String!
+}
+
+# The CreateClassSchemaInput type is used to specify the schema for a new object class to be created.
+input SchemaFieldsInput {
+  # These are the String fields to be added to the class schema.
+  addStrings: [SchemaStringFieldInput!]
+  # These are the Number fields to be added to the class schema.
+  addNumbers: [SchemaNumberFieldInput!]
+  # These are the Boolean fields to be added to the class schema.
+  addBooleans: [SchemaBooleanFieldInput!]
+  # These are the Array fields to be added to the class schema.
+  addArrays: [SchemaArrayFieldInput!]
+  # These are the Object fields to be added to the class schema.
+  addObjects: [SchemaObjectFieldInput!]
+  # These are the Date fields to be added to the class schema.
+  addDates: [SchemaDateFieldInput!]
+  # These are the File fields to be added to the class schema.
+  addFiles: [SchemaFileFieldInput!]
+  # This is the Geo Point field to be added to the class schema. Currently it is supported only one GeoPoint field per Class.
+  addGeoPoint: SchemaGeoPointFieldInput
+  # These are the Polygon fields to be added to the class schema.
+  addPolygons: [SchemaPolygonFieldInput!]
+  # These are the Bytes fields to be added to the class schema.
+  addBytes: [SchemaBytesFieldInput!]
+  # These are the Pointer fields to be added to the class schema.
+  addPointers: [PointerFieldInput!]
+  # These are the Relation fields to be added to the class schema.
+  addRelations: [RelationFieldInput!]
+  # These are the fields to be removed from the class schema.
+  remove: [SchemaFieldInput!]
+}
+
+# The SchemaFileField is used to return information of a File field.
+type SchemaFileField implements SchemaField {
+  # This is the field name.
+  name: String!
+}
+
+# The SchemaFileFieldInput is used to specify a field of type file for an object class schema.
+input SchemaFileFieldInput {
+  # This is the field name.
+  name: String!
+}
+
+# The SchemaGeoPointField is used to return information of a Geo Point field.
+type SchemaGeoPointField implements SchemaField {
+  # This is the field name.
+  name: String!
+}
+
+# The SchemaGeoPointFieldInput is used to specify a field of type geo point for an object class schema.
+input SchemaGeoPointFieldInput {
+  # This is the field name.
+  name: String!
+}
+
+# The SchemaNumberField is used to return information of a Number field.
+type SchemaNumberField implements SchemaField {
+  # This is the field name.
+  name: String!
+}
+
+# The SchemaNumberFieldInput is used to specify a field of type number for an object class schema.
+input SchemaNumberFieldInput {
+  # This is the field name.
+  name: String!
+}
+
+# The SchemaObjectField is used to return information of an Object field.
+type SchemaObjectField implements SchemaField {
+  # This is the field name.
+  name: String!
+}
+
+# The SchemaObjectFieldInput is used to specify a field of type object for an object class schema.
+input SchemaObjectFieldInput {
+  # This is the field name.
+  name: String!
+}
+
+# The SchemaPointerField is used to return information of a Pointer field.
+type SchemaPointerField implements SchemaField {
+  # This is the field name.
+  name: String!
+  # This is the name of the target class for the field.
+  targetClassName: String!
+}
+
+# The SchemaPolygonField is used to return information of a Polygon field.
+type SchemaPolygonField implements SchemaField {
+  # This is the field name.
+  name: String!
+}
+
+# The SchemaPolygonFieldInput is used to specify a field of type polygon for an object class schema.
+input SchemaPolygonFieldInput {
+  # This is the field name.
+  name: String!
+}
+
+# The SchemaRelationField is used to return information of a Relation field.
+type SchemaRelationField implements SchemaField {
+  # This is the field name.
+  name: String!
+  # This is the name of the target class for the field.
+  targetClassName: String!
+}
+
+# The SchemaStringField is used to return information of a String field.
+type SchemaStringField implements SchemaField {
+  # This is the field name.
+  name: String!
+}
+
+# The SchemaStringFieldInput is used to specify a field of type string for an object class schema.
+input SchemaStringFieldInput {
+  # This is the field name.
+  name: String!
+}
+
+# The SearchInput type is used to specifiy a search operation on a full text search.
+input SearchInput {
+  # This is the term to be searched.
+  term: String!
+  # This is the language to tetermine the list of stop words and the rules for tokenizer.
+  language: String
+  # This is the flag to enable or disable case sensitive search.
+  caseSensitive: Boolean
+  # This is the flag to enable or disable diacritic sensitive search.
+  diacriticSensitive: Boolean
+}
+
+# The SelectInput type is used to specify an inQueryKey or a notInQueryKey operation on a constraint.
+input SelectInput {
+  # This is the subquery to be executed.
+  query: SubqueryInput!
+  # This is the key in the result of the subquery that must match (not match) the field.
+  key: String!
+}
+
+# The Session object type is used in operations that involve outputting objects of Session class.
+type Session implements ParseObject {
+  # This is the object id.
+  id: ID!
+  # This is the date in which the object was created.
+  createdAt: Date!
+  # This is the date in which the object was las updated.
+  updatedAt: Date!
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object restricted.
+  restricted: Boolean
+  # This is the object user.
+  user: User
+  # This is the object installationId.
+  installationId: String
+  # This is the object sessionToken.
+  sessionToken: String
+  # This is the object expiresAt.
+  expiresAt: Date
+  # This is the object createdWith.
+  createdWith: Object
+}
+
+# The SessionFindResult object type is used in the Session find query to return the data of the matched objects.
+type SessionFindResult {
+  # This is the objects returned by the query
+  results: [Session!]!
+  # This is the total matched objecs count that is returned when the count flag is set.
+  count: Int!
+}
+
+# The SessionOrder input type is used when sorting objects of the Session class.
+enum SessionOrder {
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  ACL_ASC
+  ACL_DESC
+  restricted_ASC
+  restricted_DESC
+  user_ASC
+  user_DESC
+  installationId_ASC
+  installationId_DESC
+  sessionToken_ASC
+  sessionToken_DESC
+  expiresAt_ASC
+  expiresAt_DESC
+  createdWith_ASC
+  createdWith_DESC
+  id_ASC
+  id_DESC
+}
+
+# Allow to link OR add and link an object of the Session class.
+input SessionPointerInput {
+  # Link an existing object from Session class.
+  link: ID
+  # Create and link an object from Session class.
+  createAndLink: CreateSessionFieldsInput
+}
+
+# The SessionPointerWhereInput input type is used in operations that involve
+# filtering objects by a pointer field to Session class.
+input SessionPointerWhereInput {
+  # This is the equalTo operator to specify a constraint to select the objects
+  # where the value of a field equals to a specified value.
+  equalTo: ID
+  # This is the notEqualTo operator to specify a constraint to select the objects
+  # where the value of a field do not equal to a specified value.
+  notEqualTo: ID
+  # This is the in operator to specify a constraint to select the objects where
+  # the value of a field equals any value in the specified array.
+  in: [ID!]
+  # This is the notIn operator to specify a constraint to select the objects where
+  # the value of a field do not equal any value in the specified array.
+  notIn: [ID!]
+  # This is the exists operator to specify a constraint to select the objects where a field exists (or do not exist).
+  exists: Boolean
+  # This is the inQueryKey operator to specify a constraint to select the objects
+  # where a field equals to a key in the result of a different query.
+  inQueryKey: SelectInput
+  # This is the notInQueryKey operator to specify a constraint to select the
+  # objects where a field do not equal to a key in the result of a different query.
+  notInQueryKey: SelectInput
+  # This is the inQuery operator to specify a constraint to select the objects
+  # where a field equals to any of the ids in the result of a different query.
+  inQuery: SubqueryInput
+  # This is the notInQuery operator to specify a constraint to select the objects
+  # where a field do not equal to any of the ids in the result of a different query.
+  notInQuery: SubqueryInput
+}
+
+# Allow to add, remove, createAndAdd objects of the Session class into a relation field.
+input SessionRelationInput {
+  # Add an existing object from the Session class into the relation.
+  add: [ID!]
+  # Remove an existing object from the Session class out of the relation.
+  remove: [ID!]
+  # Create and add an object of the Session class into the relation.
+  createAndAdd: [CreateSessionFieldsInput!]
+}
+
+# The SessionWhereInput input type is used in operations that involve filtering objects of Session class.
+input SessionWhereInput {
+  # This is the object createdAt.
+  createdAt: DateWhereInput
+  # This is the object updatedAt.
+  updatedAt: DateWhereInput
+  # This is the object ACL.
+  ACL: ObjectWhereInput
+  # This is the object restricted.
+  restricted: BooleanWhereInput
+  # This is the object user.
+  user: UserPointerWhereInput
+  # This is the object installationId.
+  installationId: StringWhereInput
+  # This is the object sessionToken.
+  sessionToken: StringWhereInput
+  # This is the object expiresAt.
+  expiresAt: DateWhereInput
+  # This is the object createdWith.
+  createdWith: ObjectWhereInput
+  # This is the object id.
+  id: StringWhereInput
+  # This is the OR operator to compound constraints.
+  OR: [SessionWhereInput!]
+  # This is the AND operator to compound constraints.
+  AND: [SessionWhereInput!]
+  # This is the NOR operator to compound constraints.
+  NOR: [SessionWhereInput!]
+}
+
+# The SignUpFieldsInput input type is used in operations that involve inputting objects of User class when signing up.
+input SignUpFieldsInput {
+  # This is the object username.
+  username: String!
+  # This is the object password.
+  password: String!
+  # This is the object email.
+  email: String
+  # This is the object emailVerified.
+  emailVerified: Boolean
+  # This is the object authData.
+  authData: Object
+}
+
+# The StringWhereInput input type is used in operations that involve filtering objects by a field of type String.
+input StringWhereInput {
+  # This is the equalTo operator to specify a constraint to select the objects
+  # where the value of a field equals to a specified value.
+  equalTo: String
+  # This is the notEqualTo operator to specify a constraint to select the objects
+  # where the value of a field do not equal to a specified value.
+  notEqualTo: String
+  # This is the lessThan operator to specify a constraint to select the objects
+  # where the value of a field is less than a specified value.
+  lessThan: String
+  # This is the lessThanOrEqualTo operator to specify a constraint to select the
+  # objects where the value of a field is less than or equal to a specified value.
+  lessThanOrEqualTo: String
+  # This is the greaterThan operator to specify a constraint to select the objects
+  # where the value of a field is greater than a specified value.
+  greaterThan: String
+  # This is the greaterThanOrEqualTo operator to specify a constraint to select
+  # the objects where the value of a field is greater than or equal to a specified value.
+  greaterThanOrEqualTo: String
+  # This is the in operator to specify a constraint to select the objects where
+  # the value of a field equals any value in the specified array.
+  in: [String]
+  # This is the notIn operator to specify a constraint to select the objects where
+  # the value of a field do not equal any value in the specified array.
+  notIn: [String]
+  # This is the exists operator to specify a constraint to select the objects where a field exists (or do not exist).
+  exists: Boolean
+  # This is the inQueryKey operator to specify a constraint to select the objects
+  # where a field equals to a key in the result of a different query.
+  inQueryKey: SelectInput
+  # This is the notInQueryKey operator to specify a constraint to select the
+  # objects where a field do not equal to a key in the result of a different query.
+  notInQueryKey: SelectInput
+  # This is the matchesRegex operator to specify a constraint to select the
+  # objects where the value of a field matches a specified regular expression.
+  matchesRegex: String
+  # This is the options operator to specify optional flags (such as "i" and "m")
+  # to be added to a matchesRegex operation in the same set of constraints.
+  options: String
+  # This is the $text operator to specify a full text search constraint.
+  text: TextInput
+}
+
+# The SubqueryInput type is used to specify a sub query to another class.
+input SubqueryInput {
+  # This is the class name of the object.
+  className: String!
+  # These are the conditions that the objects need to match in order to be found
+  where: Object!
+}
+
+# The TextInput type is used to specify a text operation on a constraint.
+input TextInput {
+  # This is the search to be executed.
+  search: SearchInput!
+}
+
+# The UpdateB4aCustomFieldFieldsInput input type is used in operations that
+# involve creation of objects in the B4aCustomField class.
+input UpdateB4aCustomFieldFieldsInput {
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object objectClassName.
+  objectClassName: String
+  # This is the object objectClassFieldName.
+  objectClassFieldName: String
+  # This is the object title.
+  title: String
+  # This is the object isTableHidden.
+  isTableHidden: Boolean
+  # This is the object options.
+  options: String
+  # This is the object referencesLinkTitle.
+  referencesLinkTitle: String
+  # This is the object referenceTitleField.
+  referenceTitleField: String
+  # This is the object relevance.
+  relevance: Float
+  # This is the object isRequired.
+  isRequired: Boolean
+  # This is the object inputMask.
+  inputMask: String
+  # This is the object referencesLinkText.
+  referencesLinkText: String
+  # This is the object cssClassName.
+  cssClassName: String
+  # This is the object subType.
+  subType: String
+  # This is the object defaultValue.
+  defaultValue: String
+  # This is the object isFormHidden.
+  isFormHidden: String
+}
+
+# The UpdateB4aMenuItemFieldsInput input type is used in operations that involve creation of objects in the B4aMenuItem class.
+input UpdateB4aMenuItemFieldsInput {
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object title.
+  title: String
+  # This is the object objectClassName.
+  objectClassName: String
+  # This is the object relevance.
+  relevance: String
+  # This is the object isReadOnly.
+  isReadOnly: Boolean
+  # This is the object isHidden.
+  isHidden: Boolean
+  # This is the object editFormTitle.
+  editFormTitle: String
+  # This is the object addFormTitle.
+  addFormTitle: String
+}
+
+# The UpdateB4aSettingFieldsInput input type is used in operations that involve creation of objects in the B4aSetting class.
+input UpdateB4aSettingFieldsInput {
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object key.
+  key: String
+  # This is the object value.
+  value: String
+}
+
+# The UpdateB4aVehicleFieldsInput input type is used in operations that involve creation of objects in the B4aVehicle class.
+input UpdateB4aVehicleFieldsInput {
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object name.
+  name: String
+  # This is the object price.
+  price: Float
+  # This is the object color.
+  color: String
+}
+
+# The UpdateCommentFieldsInput input type is used in operations that involve creation of objects in the Comment class.
+input UpdateCommentFieldsInput {
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object content.
+  content: String
+  # This is the object likes.
+  likes: Float
+  # This is the object owner.
+  owner: String
+  # This is the object post.
+  post: PostPointerInput
+}
+
+# The UpdateInstallationFieldsInput input type is used in operations that involve
+# creation of objects in the Installation class.
+input UpdateInstallationFieldsInput {
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object installationId.
+  installationId: String
+  # This is the object deviceToken.
+  deviceToken: String
+  # This is the object channels.
+  channels: [Any]
+  # This is the object deviceType.
+  deviceType: String
+  # This is the object pushType.
+  pushType: String
+  # This is the object GCMSenderId.
+  GCMSenderId: String
+  # This is the object timeZone.
+  timeZone: String
+  # This is the object localeIdentifier.
+  localeIdentifier: String
+  # This is the object badge.
+  badge: Float
+  # This is the object appVersion.
+  appVersion: String
+  # This is the object appName.
+  appName: String
+  # This is the object appIdentifier.
+  appIdentifier: String
+  # This is the object parseVersion.
+  parseVersion: String
+}
+
+# The UpdatePostFieldsInput input type is used in operations that involve creation of objects in the Post class.
+input UpdatePostFieldsInput {
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object content.
+  content: String
+  # This is the object likes.
+  likes: Float
+  # This is the object tags.
+  tags: [Any]
+  # This is the object showComments.
+  showComments: Boolean
+}
+
+# The UpdateRoleFieldsInput input type is used in operations that involve creation of objects in the Role class.
+input UpdateRoleFieldsInput {
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object name.
+  name: String
+  # This is the object users.
+  users: UserRelationInput
+  # This is the object roles.
+  roles: RoleRelationInput
+}
+
+# The UpdateSessionFieldsInput input type is used in operations that involve creation of objects in the Session class.
+input UpdateSessionFieldsInput {
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object restricted.
+  restricted: Boolean
+  # This is the object user.
+  user: UserPointerInput
+  # This is the object installationId.
+  installationId: String
+  # This is the object sessionToken.
+  sessionToken: String
+  # This is the object expiresAt.
+  expiresAt: Date
+  # This is the object createdWith.
+  createdWith: Object
+}
+
+# The UpdateUserFieldsInput input type is used in operations that involve creation of objects in the User class.
+input UpdateUserFieldsInput {
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object username.
+  username: String
+  # This is the object password.
+  password: String
+  # This is the object email.
+  email: String
+  # This is the object emailVerified.
+  emailVerified: Boolean
+  # This is the object authData.
+  authData: Object
+}
+
+# The `Upload` scalar type represents a file upload.
+scalar Upload
+
+# The User object type is used in operations that involve outputting objects of User class.
+type User implements ParseObject {
+  # This is the object id.
+  id: ID!
+  # This is the date in which the object was created.
+  createdAt: Date!
+  # This is the date in which the object was las updated.
+  updatedAt: Date!
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object username.
+  username: String
+  # This is the object email.
+  email: String
+  # This is the object emailVerified.
+  emailVerified: Boolean
+  # This is the object authData.
+  authData: Object
+}
+
+# The UserFindResult object type is used in the User find query to return the data of the matched objects.
+type UserFindResult {
+  # This is the objects returned by the query
+  results: [User!]!
+  # This is the total matched objecs count that is returned when the count flag is set.
+  count: Int!
+}
+
+# The UserOrder input type is used when sorting objects of the User class.
+enum UserOrder {
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  ACL_ASC
+  ACL_DESC
+  username_ASC
+  username_DESC
+  password_ASC
+  password_DESC
+  email_ASC
+  email_DESC
+  emailVerified_ASC
+  emailVerified_DESC
+  authData_ASC
+  authData_DESC
+  id_ASC
+  id_DESC
+}
+
+# Allow to link OR add and link an object of the User class.
+input UserPointerInput {
+  # Link an existing object from User class.
+  link: ID
+  # Create and link an object from User class.
+  createAndLink: CreateUserFieldsInput
+}
+
+# The UserPointerWhereInput input type is used in operations that involve filtering objects by a pointer field to User class.
+input UserPointerWhereInput {
+  # This is the equalTo operator to specify a constraint to select the objects
+  # where the value of a field equals to a specified value.
+  equalTo: ID
+  # This is the notEqualTo operator to specify a constraint to select the objects
+  # where the value of a field do not equal to a specified value.
+  notEqualTo: ID
+  # This is the in operator to specify a constraint to select the objects where
+  # the value of a field equals any value in the specified array.
+  in: [ID!]
+  # This is the notIn operator to specify a constraint to select the objects where
+  # the value of a field do not equal any value in the specified array.
+  notIn: [ID!]
+  # This is the exists operator to specify a constraint to select the objects where a field exists (or do not exist).
+  exists: Boolean
+  # This is the inQueryKey operator to specify a constraint to select the objects
+  # where a field equals to a key in the result of a different query.
+  inQueryKey: SelectInput
+  # This is the notInQueryKey operator to specify a constraint to select the
+  # objects where a field do not equal to a key in the result of a different query.
+  notInQueryKey: SelectInput
+  # This is the inQuery operator to specify a constraint to select the objects
+  # where a field equals to any of the ids in the result of a different query.
+  inQuery: SubqueryInput
+  # This is the notInQuery operator to specify a constraint to select the objects
+  # where a field do not equal to any of the ids in the result of a different query.
+  notInQuery: SubqueryInput
+}
+
+# Allow to add, remove, createAndAdd objects of the User class into a relation field.
+input UserRelationInput {
+  # Add an existing object from the User class into the relation.
+  add: [ID!]
+  # Remove an existing object from the User class out of the relation.
+  remove: [ID!]
+  # Create and add an object of the User class into the relation.
+  createAndAdd: [CreateUserFieldsInput!]
+}
+
+# The UserWhereInput input type is used in operations that involve filtering objects of User class.
+input UserWhereInput {
+  # This is the object createdAt.
+  createdAt: DateWhereInput
+  # This is the object updatedAt.
+  updatedAt: DateWhereInput
+  # This is the object ACL.
+  ACL: ObjectWhereInput
+  # This is the object username.
+  username: StringWhereInput
+  # This is the object password.
+  password: StringWhereInput
+  # This is the object email.
+  email: StringWhereInput
+  # This is the object emailVerified.
+  emailVerified: BooleanWhereInput
+  # This is the object authData.
+  authData: ObjectWhereInput
+  # This is the object id.
+  id: StringWhereInput
+  # This is the OR operator to compound constraints.
+  OR: [UserWhereInput!]
+  # This is the AND operator to compound constraints.
+  AND: [UserWhereInput!]
+  # This is the NOR operator to compound constraints.
+  NOR: [UserWhereInput!]
+}
+
+# The Viewer object type is used in operations that involve outputting the current user data.
+type Viewer implements ParseObject {
+  # This is the object id.
+  id: ID!
+  # This is the date in which the object was created.
+  createdAt: Date!
+  # This is the date in which the object was las updated.
+  updatedAt: Date!
+  # This is the access control list of the object.
+  ACL: Object
+  # This is the object username.
+  username: String
+  # This is the object email.
+  email: String
+  # This is the object emailVerified.
+  emailVerified: Boolean
+  # This is the object authData.
+  authData: Object
+  # The user session token
+  sessionToken: String!
+}
+
+# The WithinInput type is used to specify a within operation on a constraint.
+input WithinInput {
+  # This is the box to be specified.
+  box: BoxInput!
+}
+
