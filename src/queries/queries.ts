@@ -44,7 +44,7 @@ export const getAllPostsQuery = graphql`
 // OperationType for getAllPostsQuery. Not actually used...
 export interface GetPostsOperation extends OperationType {
 	variables: {
-		//No inputs
+		isUpdate: boolean, // Used to trigger refresh
 	};
 	response: {
 		posts: {
@@ -83,7 +83,7 @@ export interface SubmitPostOperation extends MutationParameters {
 	variables: {
 		content: String;
 		likes: Number;
-		tags: [String];
+		tags: String[];
 		showComments: Boolean;
 	};
 	response: {

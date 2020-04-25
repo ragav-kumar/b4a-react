@@ -16,14 +16,7 @@ const generateFetch = (sessionToken?: string) => {
 	}
 	return async (params:RequestParameters, variables:Variables) => {
 		console.log(`fetching query ${params.name} with ${JSON.stringify(variables)}`);
-		const headers: HeadersInit = {
-			'X-Parse-Application-Id': API.applicationID,
-			'X-Parse-Javascript-Key': API.key,
-			'Content-Type': 'application/json',
-		};
-		if (params.metadata.hasOwnProperty("sessionToken")) {
-			headers["X-Parse-Session-Token"] = String(params.metadata.sessionToken);
-		}
+		console.log("Headers:", headers);
 		const response = await fetch(API.uri, {
 			method: 'POST',
 			headers: headers,
@@ -32,24 +25,6 @@ const generateFetch = (sessionToken?: string) => {
 		return await response.json();
 	}
 }
-/*
-const fetchQuery: FetchFunction = async (params, variables) => {
-	console.log(`fetching query ${params.name} with ${JSON.stringify(variables)}`);
-	const headers: HeadersInit = {
-		'X-Parse-Application-Id': API.applicationID,
-		'X-Parse-Javascript-Key': API.key,
-		'Content-Type': 'application/json',
-	};
-	if (params.metadata.hasOwnProperty("sessionToken")) {
-		headers["X-Parse-Session-Token"] = String(params.metadata.sessionToken);
-	}
-	const response = await fetch(API.uri, {
-		method: 'POST',
-		headers: headers,
-		body: JSON.stringify({ query: params.text, variables }),
-	});
-	return await response.json();
-}*/
 // Logged Out Environment
 export const loggedOutEnvironment = new Environment({
 	network: Network.create(generateFetch()),

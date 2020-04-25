@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import { getAllPostsQuery } from "../queries/queries";
 import { QueryRenderer } from 'react-relay';
 import { loggedOutEnvironment } from '../relayEnvironment';
